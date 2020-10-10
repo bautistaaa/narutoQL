@@ -1,0 +1,48 @@
+{
+  "name": "narutoql",
+  "version": "1.0.0",
+  "description": "GraphQL API for naruto",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --project ./",
+    "start": "nodemon server/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.8",
+    "@types/node": "^14.11.2",
+    "@typescript-eslint/parser": "^4.2.0",
+    "cheerio": "^1.0.0-rc.3",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.10.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.2",
+    "prettier-eslint": "^11.0.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "@types/compression": "^1.7.0",
+    "@types/graphql-depth-limit": "^1.1.2",
+    "@types/mongoose": "^5.7.36",
+    "@types/morgan": "^1.9.1",
+    "apollo-server-express": "^2.18.1",
+    "axios": "^0.20.0",
+    "class-validator": "^0.12.2",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "csv-parser": "^2.3.3",
+    "express": "^4.17.1",
+    "graphql": "^15.3.0",
+    "graphql-depth-limit": "^1.1.0",
+    "graphql-tools": "^6.2.3",
+    "lodash": "^4.17.20",
+    "mongoose": "^5.10.7",
+    "morgan": "^1.10.0",
+    "objects-to-csv": "^1.3.6",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.0.0"
+  }
+}
