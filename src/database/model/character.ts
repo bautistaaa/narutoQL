@@ -15,13 +15,8 @@ const characterSchema = new mongoose.Schema({
   notableFeatures: String,
   notableQuotes: String,
   rank: String,
-  village: { type: mongoose.Schema.Types.ObjectId, ref: 'Village' },
+  village: String,
 });
-
-characterSchema.statics.findByName = function (character) {};
-characterSchema.statics.findById = function (character) {};
-characterSchema.statics.findByVillage = function (character) {};
-characterSchema.statics.findByClan = function (character) {};
 
 const Character = mongoose.model('Character', characterSchema);
 

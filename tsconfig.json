@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
@@ -9,10 +9,12 @@
     "module": "commonjs",
     "noImplicitAny": false,
     "outDir": "dist",
-    "strict": true,
+    "resolveJsonModule": true,
+    "rootDir": "src",
     "skipLibCheck": true,
-    "target": "es2018"
+    "target": "es2018",
+    "paths": { "@utils/*": ["./src/utils/*"] }
   },
   "exclude": ["node_modules", "**/*.spec.ts"],
-  "include": ["server/**/*"]
+  "include": ["src/**/*"]
 }

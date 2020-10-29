@@ -3,7 +3,7 @@ const axios = require('axios');
 const _ = require('lodash');
 const ObjectsToCsv = require('objects-to-csv');
 
-const BASE_URL = 'http://www.leafninja.com/';
+const BASE_URL = 'http://leafninja.com/';
 const BIO_LINKS = [
   'http://www.leafninja.com/biographies-A.php',
   'http://www.leafninja.com/biographies-B.php',

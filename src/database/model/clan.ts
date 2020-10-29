@@ -9,10 +9,8 @@ const clanSchema = new mongoose.Schema({
     required: true,
   },
   signatureAbilities: String,
-  village: { type: mongoose.Schema.Types.ObjectId, ref: 'Village' },
+  village: String,
 });
-
-clanSchema.statics.findByVillage = function (clan) {};
 
 const Clan = mongoose.model('Clan', clanSchema);
 

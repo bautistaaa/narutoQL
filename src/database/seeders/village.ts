@@ -3,7 +3,7 @@ import csv from 'csv-parser';
 import path from 'path';
 import fs from 'fs';
 
-import { connectDb } from '../../database/model';
+import { connectDb } from '../model';
 import Village from '../model/village';
 
 export default async function seedVillage() {
@@ -13,13 +13,16 @@ export default async function seedVillage() {
     'Seeding village to database:' + mongoose.connection.name + '...'
   );
 
-  Village.deleteMany({}, () => {
-    console.log('Truncated Villages successfully!');
-    const villages: any[] = [];
-    const stream = fs.createReadStream(
-      path.resolve(process.cwd(), 'villages.csv')
-    );
+  const truncated = await Village.deleteMany({});
 
+  console.log(`village truncated: ${JSON.stringify(truncated)}`);
+  console.log('Truncated Villages successfully!');
+
+  const villages: any[] = [];
+  const stream = fs.createReadStream(
+    path.resolve(process.cwd(), 'villages.csv')
+  );
+  return new Promise((resolve, reject) => {
     stream
       .pipe(csv())
       .on('data', village => {
@@ -34,6 +37,8 @@ export default async function seedVillage() {
         );
         console.log('Succesfully seeded Village!');
         stream.destroy();
-      });
+        resolve();
+      })
+      .on('error', () => reject('Village Seeder Failed'));
   });
 }
