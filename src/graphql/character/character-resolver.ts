@@ -19,9 +19,10 @@ export class CharacterResolver {
 
   @Query(() => [Character])
   async characters(
-    @Args(() => GetCharactersArgs) { rank, village }: GetCharactersArgs
+    @Args(() => GetCharactersArgs) { name, rank, village }: GetCharactersArgs
   ): Promise<Document[]> {
     return CharacterModel.find({
+      name: new RegExp(name, 'i'),
       rank: new RegExp(rank, 'i'),
       village: new RegExp(village, 'i'),
     }).exec();

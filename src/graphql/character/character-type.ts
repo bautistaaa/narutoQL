@@ -31,6 +31,9 @@ export class Character {
 @ArgsType()
 export class GetCharactersArgs {
   @Field({ nullable: true })
+  name?: string;
+
+  @Field({ nullable: true })
   rank?: string;
 
   @Field({ nullable: true })
