@@ -1,7 +1,6 @@
 import { Document } from 'mongoose';
 import { Resolver, Arg, Query } from 'type-graphql';
-import { Village } from './';
-import VillageModel from '../../database/model/village';
+import { Village, VillageModel } from './';
 import NotFoundError from '../../utils/errors';
 
 @Resolver(() => Village)

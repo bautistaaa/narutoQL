@@ -1,6 +1,6 @@
 FROM node:12
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY package*.json ./
 
@@ -12,4 +12,4 @@ EXPOSE 8000
 
 RUN npm run seed
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]

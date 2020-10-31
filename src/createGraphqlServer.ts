@@ -1,5 +1,4 @@
 import { ApolloServer } from 'apollo-server-express';
-import { Container } from 'typedi';
 import { buildSchema } from 'type-graphql';
 import depthLimit from 'graphql-depth-limit';
 import { VillageResolver } from './graphql/village';
@@ -16,8 +15,6 @@ const createGraphqlServer = async () => {
   };
   const schema = await buildSchema({
     resolvers: [CharacterResolver, ClanResolver, VillageResolver],
-    // register the 3rd party IOC container
-    container: Container,
   });
 
   return new ApolloServer({

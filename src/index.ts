@@ -4,7 +4,7 @@ dotenv.config();
 import 'reflect-metadata';
 
 import mongoose from 'mongoose';
-import { connectDb } from './database/model';
+import { connectDb } from './database';
 import createExpressServer from './createExpressServer';
 import createGraphqlServer from './createGraphqlServer';
 
@@ -17,7 +17,7 @@ const start = async () => {
   const app = createExpressServer(apolloServer);
 
   app.listen(PORT, () => {
-    console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
+    console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
   });
 };
 

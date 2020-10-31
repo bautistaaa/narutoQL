@@ -1,7 +1,6 @@
 import { Document } from 'mongoose';
 import { Resolver, Arg, Query, Args } from 'type-graphql';
-import { Character, GetCharactersArgs } from './';
-import CharacterModel from '../../database/model/character';
+import { Character, CharacterModel, GetCharactersArgs } from './';
 import NotFoundError from '../../utils/errors';
 
 @Resolver()

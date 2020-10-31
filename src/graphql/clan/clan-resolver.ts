@@ -1,7 +1,6 @@
 import { Document } from 'mongoose';
 import { Arg, Args, Query, Resolver } from 'type-graphql';
-import { Clan, GetClanArgs } from './';
-import ClanModel from '../../database/model/clan';
+import { Clan, ClanModel, GetClanArgs } from './';
 import NotFoundError from '../../utils/errors';
 
 @Resolver(() => Clan)

@@ -1,31 +1,55 @@
+import { getModelForClass, prop } from '@typegoose/typegoose';
 import { ArgsType, Field, ID, ObjectType } from 'type-graphql';
 
 @ObjectType()
 export class Character {
+  @prop()
   @Field({ nullable: true })
-  age: number;
+  age?: number;
+
+  @prop()
   @Field({ nullable: true })
-  avatarSrc: string;
-  @Field()
-  description: string;
+  avatarSrc?: string;
+
+  @prop()
   @Field({ nullable: true })
-  firstAnimeAppearance: string;
+  description?: string;
+
+  @prop()
   @Field({ nullable: true })
-  firstMangaAppearance: string;
+  firstAnimeAppearance?: string;
+
+  @prop()
+  @Field({ nullable: true })
+  firstMangaAppearance?: string;
+
+  @prop()
   @Field(() => ID)
   _id: string;
+
+  @prop({ required: true, unique: true })
   @Field()
   name: string;
+
+  @prop()
   @Field({ nullable: true })
-  nameMeaning: string;
+  nameMeaning?: string;
+
+  @prop()
   @Field({ nullable: true })
-  notableFeatures: string;
+  notableFeatures?: string;
+
+  @prop()
   @Field({ nullable: true })
-  notableQuotes: string;
+  notableQuotes?: string;
+
+  @prop()
   @Field({ nullable: true })
-  rank: string;
+  rank?: string;
+
+  @prop()
   @Field({ nullable: true })
-  village: string;
+  village?: string;
 }
 
 @ArgsType()
@@ -39,3 +63,6 @@ export class GetCharactersArgs {
   @Field({ nullable: true })
   village?: string;
 }
+
+export const CharacterModel = getModelForClass(Character);
+

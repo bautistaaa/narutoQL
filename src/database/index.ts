@@ -1,9 +1,5 @@
 import mongoose from 'mongoose';
 
-import Characters from './character';
-import Clan from './clan';
-import Village from './village';
-
 const dbUrl = process.env.DATABASE_URL;
 const connectDb = () => {
   if (dbUrl) {
@@ -13,8 +9,4 @@ const connectDb = () => {
   throw Error('no db connected');
 };
 
-const models = { Characters, Clan, Village };
-
 export { connectDb };
-
-export default models;

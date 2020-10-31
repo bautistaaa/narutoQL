@@ -5,11 +5,17 @@ services:
     restart: always
     build: .
     ports:
-      - '80:8000'
+      - '8000:8000'
     links:
       - mongo
+    depends_on:
+      - mongo
+    volumes:
+      - .:/app
+    environment:
+      DATABASE_URL: mongodb://mongo:27017/naruto
   mongo:
     container_name: mongo
-    image: mongo
+    image: mongo:4.2.8
     ports:
       - '27017:27017'
