@@ -1,8 +1,8 @@
 require('dotenv').config();
 import AWS from 'aws-sdk';
 import fetch from 'node-fetch';
-import { connectDb } from '../model';
-import Character from '../model/character';
+import { connectDb } from '../';
+import { CharacterModel } from '../../graphql/character';
 
 export default async function cleanUpCharacterImageSrc() {
   const s3 = new AWS.S3();
@@ -12,7 +12,7 @@ export default async function cleanUpCharacterImageSrc() {
     'Seeding characters to database:' + mongoose.connection.name + '...'
   );
 
-  const charactersNotUploaded = await Character.find({
+  const charactersNotUploaded = await CharacterModel.find({
     avatarSrc: new RegExp('leafninja', 'i'),
   }).limit(100);
   charactersNotUploaded.forEach(async (character: any) => {
