@@ -3,16 +3,15 @@ import csv from 'csv-parser';
 import path from 'path';
 import fs from 'fs';
 
-import { connectDb } from '../model';
-import Clan from '../model/clan';
-//import Village from '../model/village';
+import { connectDb } from '../';
+import { ClanModel } from '../../graphql/clan';
 
 export default async function seedClan() {
   const mongoose = await connectDb();
 
   console.log('Seeding clan to database:' + mongoose.connection.name + '...');
 
-  const truncated = await Clan.deleteMany({});
+  const truncated = await ClanModel.deleteMany({});
 
   console.log(`clan truncated: ${JSON.stringify(truncated)}`);
   console.log('Truncated Clans successfully!');
@@ -29,7 +28,7 @@ export default async function seedClan() {
             //name: clan.village.toLowerCase(),
             //});
 
-            const newClan = new Clan({
+            const newClan = new ClanModel({
               ...clan,
               village: clan.village.toLowerCase(),
             });

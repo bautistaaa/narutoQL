@@ -3,9 +3,8 @@ import csv from 'csv-parser';
 import path from 'path';
 import fs from 'fs';
 
-import { connectDb } from '../model';
-import Character from '../model/character';
-//import Village from '../model/village';
+import { connectDb } from '../';
+import { CharacterModel } from '../../graphql/character';
 
 export default async function seedClan() {
   const mongoose = await connectDb();
@@ -14,10 +13,10 @@ export default async function seedClan() {
     'Seeding characters to database:' + mongoose.connection.name + '...'
   );
 
-  const truncated = await Character.deleteMany({});
+  const truncated = await CharacterModel.deleteMany({});
 
   console.log(`character truncated: ${JSON.stringify(truncated)}`);
-  console.log('Truncated Character successfully!');
+  console.log('Truncated CharacterModel successfully!');
   const characters: any[] = [];
   const stream = fs.createReadStream(
     path.resolve(process.cwd(), 'characters.csv')
@@ -35,7 +34,7 @@ export default async function seedClan() {
             //});
             // save image
 
-            const newCharacter = new Character({
+            const newCharacter = new CharacterModel({
               ...character,
               name: character.name.trim(),
               village: character.village.toLowerCase(),
@@ -43,7 +42,7 @@ export default async function seedClan() {
             await newCharacter.save();
           })
         );
-        console.log('Succesfully seeded Character!');
+        console.log('Succesfully seeded CharacterModel!');
         stream.destroy();
         resolve();
       })

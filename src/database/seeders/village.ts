@@ -3,8 +3,8 @@ import csv from 'csv-parser';
 import path from 'path';
 import fs from 'fs';
 
-import { connectDb } from '../model';
-import Village from '../model/village';
+import { connectDb } from '../';
+import { VillageModel } from '../../graphql/village';
 
 export default async function seedVillage() {
   const mongoose = await connectDb();
@@ -13,7 +13,7 @@ export default async function seedVillage() {
     'Seeding village to database:' + mongoose.connection.name + '...'
   );
 
-  const truncated = await Village.deleteMany({});
+  const truncated = await VillageModel.deleteMany({});
 
   console.log(`village truncated: ${JSON.stringify(truncated)}`);
   console.log('Truncated Villages successfully!');
@@ -31,7 +31,7 @@ export default async function seedVillage() {
       .on('end', async () => {
         await Promise.all(
           villages.map(async village => {
-            const newVillage = new Village(village);
+            const newVillage = new VillageModel(village);
             await newVillage.save();
           })
         );
