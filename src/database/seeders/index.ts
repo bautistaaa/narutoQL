@@ -1,5 +1,5 @@
 require('dotenv').config();
-import { connectDb } from '../model';
+import { connectDb } from '../';
 import seedVillage from './village';
 import seedClan from './clan';
 import seedCharacter from './character';
