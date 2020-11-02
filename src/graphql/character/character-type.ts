@@ -23,7 +23,6 @@ export class Character {
   @Field({ nullable: true })
   firstMangaAppearance?: string;
 
-  @prop()
   @Field(() => ID)
   _id: string;
 
