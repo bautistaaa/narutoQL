@@ -3,7 +3,6 @@ import { Field, ID, ObjectType } from 'type-graphql';
 
 @ObjectType()
 export class Village {
-  @prop({ required: true })
   @Field(() => ID)
   _id: string;
 

@@ -11,7 +11,6 @@ export class Clan {
   @Field()
   description: string;
 
-  @prop()
   @Field(() => ID)
   _id: string;
 
