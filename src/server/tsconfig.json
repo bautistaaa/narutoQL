@@ -8,13 +8,13 @@
     "lib": ["es2018", "esnext.asynciterable"],
     "module": "commonjs",
     "noImplicitAny": false,
-    "outDir": "dist",
+    "outDir": "dist/server",
     "resolveJsonModule": true,
-    "rootDir": "src",
+    "rootDir": ".",
     "skipLibCheck": true,
     "target": "es2018",
     "paths": { "@utils/*": ["./src/utils/*"] }
   },
   "exclude": ["node_modules", "**/*.spec.ts"],
-  "include": ["src/**/*"]
+  "include": ["**/*.ts"]
 }

@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc --project ./",
-    "dev": "nodemon src/index.ts",
-    "seed": "ts-node src/database/seeders/index.ts",
-    "start": "npm run build && node dist/index.js",
+    "clean": "rm -rf dist",
+    "dev": "nodemon index.ts",
+    "seed": "ts-node database/seeders/index.ts",
+    "start": "npm run clean && npm run build && node ../../dist/server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

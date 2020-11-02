@@ -3,7 +3,7 @@ services:
   app:
     container_name: docker-node-mongo
     restart: always
-    build: .
+    build: ./src/server
     ports:
       - '8000:8000'
     links:
