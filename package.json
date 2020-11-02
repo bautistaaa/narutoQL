@@ -4,10 +4,11 @@
   "description": "GraphQL API for naruto",
   "main": "index.js",
   "scripts": {
-    "build": "tsc --project ./",
-    "dev": "nodemon src/index.ts",
-    "seed": "ts-node src/database/seeders/index.ts",
-    "start": "npm run build && node dist/index.js",
+    "build:server": "tsc --project ./",
+    "clean": "rm -rf dist",
+    "dev:server": "nodemon src/index.ts",
+    "seed": "ts-node src/server/database/seeders/index.ts",
+    "start:server": "npm run clean && npm run build:server && node dist/server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

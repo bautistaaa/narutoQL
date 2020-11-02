@@ -12,4 +12,4 @@ EXPOSE 8000
 
 RUN npm run seed
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start:server"]
