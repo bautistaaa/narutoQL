@@ -1,17 +1,31 @@
 version: '3'
 services:
+  client:
+    container_name: next
+    restart: always
+    build:
+      context: ./src/client
+    volumes:
+      - './src/client:/client'
+    ports:
+      - '3000:3000'
+    links:
+      - app
+    depends_on:
+      - app
   app:
     container_name: docker-node-mongo
     restart: always
-    build: ./src/server
+    build:
+      context: ./src/server
+    volumes:
+      - './src/server:/client'
     ports:
       - '8000:8000'
     links:
       - mongo
     depends_on:
       - mongo
-    volumes:
-      - .:/app
     environment:
       DATABASE_URL: mongodb://mongo:27017/naruto
   mongo:
