@@ -5,15 +5,18 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "serve": "npm run build && npm start"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "next": "10.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "sass": "^1.28.0"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.11",
     "@types/node": "^14.14.6",
     "@types/react": "^16.9.55",
     "typescript": "^4.0.5"

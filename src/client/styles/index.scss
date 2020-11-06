@@ -1,0 +1,28 @@
+@import './reset.scss';
+
+html {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+body {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  color: #444444;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

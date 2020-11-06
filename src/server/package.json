@@ -8,7 +8,7 @@
     "clean": "rm -rf dist",
     "dev": "nodemon index.ts",
     "seed": "ts-node database/seeders/index.ts",
-    "start": "npm run clean && npm run build && node ../../dist/server/index.js",
+    "start": "npm run clean && npm run build && node dist/server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

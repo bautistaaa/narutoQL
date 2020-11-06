@@ -12,7 +12,7 @@ export class CharacterResolver {
       return character;
     } catch (error) {
       console.log(error);
-      throw new NotFoundError('Character not found!');
+      throw new NotFoundError('Character  found!');
     }
   }
 
