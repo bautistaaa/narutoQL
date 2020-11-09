@@ -4,8 +4,12 @@ import cx from 'classnames';
 import { sections } from '../data/sections';
 import styles from '../styles/Sidebar.module.scss';
 
-const SideBar: FC<{ isVisible: boolean; toggle: Function }> = props => {
-  const { isVisible, toggle } = props;
+const SideBar: FC<{
+  isDesktop: boolean;
+  isVisible: boolean;
+  toggle: Function;
+}> = props => {
+  const { isDesktop, isVisible, toggle } = props;
   const wrapperClass = cx([
     styles.wrapper,
     {
@@ -18,6 +22,11 @@ const SideBar: FC<{ isVisible: boolean; toggle: Function }> = props => {
       [styles['nav-hidden']]: !isVisible,
     },
   ]);
+  const handleClick = () => {
+    if (!isDesktop) {
+      toggle();
+    }
+  };
 
   return (
     <div className={wrapperClass}>
@@ -27,9 +36,9 @@ const SideBar: FC<{ isVisible: boolean; toggle: Function }> = props => {
             const { id, text, items } = section;
 
             return (
-              <li className={styles.section}>
+              <li key={id} className={styles.section}>
                 <a
-                  onClick={() => toggle()}
+                  onClick={handleClick}
                   className={styles.header}
                   href={`#${id}`}
                 >
@@ -39,8 +48,8 @@ const SideBar: FC<{ isVisible: boolean; toggle: Function }> = props => {
                   {items.map(item => {
                     const { id, text } = item;
                     return (
-                      <li className={styles.item}>
-                        <a onClick={() => toggle()} href={`#${id}`}>
+                      <li key={id} className={styles.item}>
+                        <a onClick={handleClick} href={`#${id}`}>
                           {text}
                         </a>
                       </li>

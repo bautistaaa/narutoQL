@@ -19,7 +19,7 @@ services:
     build:
       context: ./src/server
     volumes:
-      - './src/server:/client'
+      - './src/server:/server'
     ports:
       - '8000:8000'
     links:
@@ -30,6 +30,8 @@ services:
       DATABASE_URL: mongodb://mongo:27017/naruto
   mongo:
     container_name: mongo
+    volumes:
+      - './mongo:/data/db'
     image: mongo:4.2.8
     ports:
       - '27017:27017'

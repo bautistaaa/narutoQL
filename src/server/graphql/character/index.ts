@@ -1,2 +1,4 @@
+export { CharacterInput } from './character-input';
 export { CharacterResolver } from './character-resolver';
-export { Character, CharacterModel, GetCharactersArgs } from './character-type';
+export { Character, CharacterModel } from './character-type';
+export { Characters, GetCharactersArgs } from './characters-type';
