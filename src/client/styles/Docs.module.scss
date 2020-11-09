@@ -3,6 +3,7 @@
     &-shrink {
       padding: 0 20px;
       margin-left: 250px;
+      transition: all 0.2s ease-in-out;
     }
   }
   .article {
@@ -10,7 +11,6 @@
     max-width: 900px;
     margin: 0 auto;
     padding: 0;
-    transition: all 0.2s ease-in-out;
     @media (min-width: 768px) {
       padding: 0 40px;
     }
