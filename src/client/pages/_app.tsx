@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from 'next/head';
 
 import GoogleTag from '../components/GoogleTag';
 import Layout from '../components/Layout';

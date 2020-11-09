@@ -1,8 +1,47 @@
+.wrapper {
+  .article {
+    margin: 0;
+    padding: 0;
+    transition: all 0.2s ease-in-out;
+    @media (min-width: 768px) {
+      padding: 0 40px;
+    }
+
+    &-shrink {
+      padding: 0 20px;
+      margin-left: 250px;
+    }
+    .anchor {
+      display: block;
+      position: relative;
+      top: -50px;
+      visibility: hidden;
+    }
+    h2 {
+      font-weight: bold;
+      font-size: 1.7em;
+      margin: 20px 0;
+    }
+    h3 {
+      font-weight: bold;
+      font-size: 1.4em;
+      margin: 15px 0;
+    }
+
+    p {
+      line-height: 1.5em;
+      font-size: 1.1em;
+      font-weight: 200;
+    }
+  }
+}
+
 .button {
+  cursor: pointer;
   border: none;
   position: fixed;
-  bottom: 10px;
-  right: 10px;
+  bottom: 25px;
+  right: 25px;
   background-color: #b20000;
   border-radius: 50%;
   height: 50px;
@@ -10,31 +49,16 @@
   z-index: 110;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   transition: transform 0.3s;
-}
-
-.wrapper {
-  .article {
-    margin: 0;
-    @media (min-width: 768px) {
-      margin-left: 250px;
-    }
-  }
-  h3 {
-    font-weight: bold;
-    font-size: 1.7em;
-    margin: 20px 0 30px;
-  }
-
-  p {
-    line-height: 1.5em;
-    font-size: 1.1em;
-    font-weight: 200;
+  &-spin {
+    animation: spin 1s ease-in-out;
   }
 }
 
-.anchor {
-  display: block;
-  position: relative;
-  top: -50px;
-  visibility: hidden;
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

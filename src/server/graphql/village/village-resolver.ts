@@ -11,6 +11,7 @@ export class VillageResolver {
       const village = await VillageModel.findById(id);
       return village;
     } catch (error) {
+      console.log(error);
       throw new NotFoundError('Village not found!');
     }
   }

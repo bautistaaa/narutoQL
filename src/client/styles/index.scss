@@ -1,4 +1,5 @@
 @import './reset.scss';
+@import './prism.scss';
 
 html {
   box-sizing: border-box;
@@ -25,4 +26,56 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+strong {
+  font-weight: 500;
+}
+
+table {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  margin-bottom: 3.25em;
+  font-size: 1em;
+  line-height: 1.625em;
+  border-collapse: collapse;
+  width: 100%;
+  thead {
+    text-align: left;
+    font-weight: 400;
+  }
+  td,
+  th {
+    padding: 15px;
+    vertical-align: middle;
+    &:nth-child(1) {
+      padding-left: 0;
+    }
+  }
+  thead,
+  tr {
+    border-bottom: 1px solid #d6d6d6;
+  }
+}
+
+.code-text {
+  font-size: .9em;
+  background: rgba(27, 31, 35, 0.05);
+  color: rgb(71, 101, 130);
+  padding: 0.25em 0.5em;
+  border-radius: 3px;
+  white-space: normal;
+}
+
+ul.show-bullets {
+  margin-left: 2em;
+  li {
+    list-style-type: disc;
+    padding: 10px 0;
+  }
 }
