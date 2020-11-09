@@ -45,10 +45,11 @@ const Docs = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { width } = useWindowSize();
   const isDesktop = width >= 768;
-  const articleClass = cx([
-    styles.article,
+  const articleClass = cx([styles.article]);
+  const innerClass = cx([
+    styles.inner,
     {
-      [styles['article-shrink']]: isDesktop && isOpen,
+      [styles['inner-shrink']]: isDesktop && isOpen,
     },
   ]);
 
@@ -62,100 +63,102 @@ const Docs = () => {
 
   return (
     <div className={styles.wrapper}>
-      <SideBar
-        isVisible={isOpen}
-        toggle={() => setIsOpen(false)}
-        isDesktop={isDesktop}
-      />
-      <Toggle handleClick={() => setIsOpen(!isOpen)} />
-      <article className={articleClass}>
-        <div className={styles.anchor} id="introduction" />
-        <h2>Introduction</h2>
-        <p>
-          Not sure how you ended up here? Cool, either are we but there is a
-          strong assumption you are interested in graphQL or anime. Use this
-          documentation to help you get the most out of the{' '}
-          <strong>NarutoQL API.</strong>
-        </p>
+      <div className={innerClass}>
+        <SideBar
+          isVisible={isOpen}
+          toggle={() => setIsOpen(false)}
+          isDesktop={isDesktop}
+        />
+        <Toggle handleClick={() => setIsOpen(!isOpen)} />
+        <article className={articleClass}>
+          <div className={styles.anchor} id="introduction" />
+          <h2>Introduction</h2>
+          <p>
+            Not sure how you ended up here? Cool, either are we but there is a
+            strong assumption you are interested in graphQL or anime. Use this
+            documentation to help you get the most out of the{' '}
+            <strong>NarutoQL API.</strong>
+          </p>
 
-        <div className={styles.anchor} id="character" />
-        <h2>Character</h2>
-        <p>
-          One of the more interesting data points of the API. Characters are
-          sorted by name.
-        </p>
+          <div className={styles.anchor} id="character" />
+          <h2>Character</h2>
+          <p>
+            One of the more interesting data points of the API. Characters are
+            sorted by name.
+          </p>
 
-        <section>
-          <div className={styles.anchor} id="character-schema" />
-          <h3>Character Schema</h3>
-          <CharacterSchema />
-        </section>
-        <div className={styles.anchor} id="single-character" />
-        <h3>Get Single Character</h3>
-        <div>
-          <CharacterSingle />
-        </div>
+          <section>
+            <div className={styles.anchor} id="character-schema" />
+            <h3>Character Schema</h3>
+            <CharacterSchema />
+          </section>
+          <div className={styles.anchor} id="single-character" />
+          <h3>Get Single Character</h3>
+          <div>
+            <CharacterSingle />
+          </div>
 
-        <div className={styles.anchor} id="all-characters" />
-        <h3>Get All Characters</h3>
-        <div>
-          <CharacterAll />
-        </div>
+          <div className={styles.anchor} id="all-characters" />
+          <h3>Get All Characters</h3>
+          <div>
+            <CharacterAll />
+          </div>
 
-        <div className={styles.anchor} id="filter-characters" />
-        <h3>Filter Characters</h3>
-        <div>
-          <CharacterFilter />
-        </div>
+          <div className={styles.anchor} id="filter-characters" />
+          <h3>Filter Characters</h3>
+          <div>
+            <CharacterFilter />
+          </div>
 
-        <div className={styles.anchor} id="clan" />
-        <h2>Clan</h2>
-        <p>Clan info and things...</p>
+          <div className={styles.anchor} id="clan" />
+          <h2>Clan</h2>
+          <p>Clan info and things...</p>
 
-        <div className={styles.anchor} id="clan-schema" />
-        <h3>Clan Schema</h3>
-        <ClanSchema />
+          <div className={styles.anchor} id="clan-schema" />
+          <h3>Clan Schema</h3>
+          <ClanSchema />
 
-        <div className={styles.anchor} id="single-clan" />
-        <h3>Get Single Clan</h3>
-        <div>
-          <ClanSingle />
-        </div>
+          <div className={styles.anchor} id="single-clan" />
+          <h3>Get Single Clan</h3>
+          <div>
+            <ClanSingle />
+          </div>
 
-        <div className={styles.anchor} id="all-clans" />
-        <h3>Get All Clans</h3>
-        <div>
-          <ClanAll />
-        </div>
+          <div className={styles.anchor} id="all-clans" />
+          <h3>Get All Clans</h3>
+          <div>
+            <ClanAll />
+          </div>
 
-        <div className={styles.anchor} id="filter-clans" />
-        <h3>Filter Clans</h3>
-        <div>
-          <ClanFilter />
-        </div>
+          <div className={styles.anchor} id="filter-clans" />
+          <h3>Filter Clans</h3>
+          <div>
+            <ClanFilter />
+          </div>
 
-        <div className={styles.anchor} id="village" />
-        <h2>Village</h2>
-        <p>Village things!</p>
+          <div className={styles.anchor} id="village" />
+          <h2>Village</h2>
+          <p>Village things!</p>
 
-        <div className={styles.anchor} id="village-schema" />
-        <h3>Village Schema</h3>
-        <div>
-          <VillageSchema />
-        </div>
+          <div className={styles.anchor} id="village-schema" />
+          <h3>Village Schema</h3>
+          <div>
+            <VillageSchema />
+          </div>
 
-        <div className={styles.anchor} id="single-schema" />
-        <h3>Get Single Village</h3>
-        <div>
-          <VillageSingle />
-        </div>
+          <div className={styles.anchor} id="single-schema" />
+          <h3>Get Single Village</h3>
+          <div>
+            <VillageSingle />
+          </div>
 
-        <div className={styles.anchor} id="all-villages" />
-        <h3>Get All Villages</h3>
-        <div>
-          <VillageAll />
-        </div>
-      </article>
+          <div className={styles.anchor} id="all-villages" />
+          <h3>Get All Villages</h3>
+          <div>
+            <VillageAll />
+          </div>
+        </article>
+      </div>
     </div>
   );
 };
