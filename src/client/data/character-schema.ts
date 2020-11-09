@@ -38,7 +38,7 @@ const characterSchema: IDataTable = {
       key: 'name',
       type: 'String',
       description:
-        'ID of character, helpful when trying to query individual character.',
+        'Name of character.',
     },
     {
       key: 'nameMeaning',

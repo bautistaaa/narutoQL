@@ -14,6 +14,12 @@
   justify-content: space-between;
   height: 100%;
   padding: 0 20px;
+  .links {
+    li {
+      display: inline-block;
+      margin-left: 10px;
+    }
+  }
   .brand {
     cursor: pointer;
   }
@@ -21,5 +27,4 @@
     font-weight: bold;
     font-size: 1.2em;
   }
-
 }

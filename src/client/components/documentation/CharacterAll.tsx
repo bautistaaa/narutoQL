@@ -53,9 +53,10 @@ const CharacterAll: FC = () => {
     <>
       <p>
         Use the <code className="code-text">characters</code> query to get all
-        characters. See <strong> filtering </strong> section below for
-        customizations.
+        characters. See <strong> filtering </strong> section below for available
+        parameters.
       </p>
+      <strong>Sample Query/Response</strong>
       <CodeSnippet language="graphql" code={code} />
       <CodeSnippet language="json" code={json} />
     </>

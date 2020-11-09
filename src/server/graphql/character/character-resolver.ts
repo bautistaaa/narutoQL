@@ -36,8 +36,6 @@ export class CharacterResolver {
         .exec(),
       CharacterModel.find(query).countDocuments(),
     ]);
-    console.log(`^^^^^^^^^^^^^^^^^^`);
-    console.log(results);
     const pages = Math.ceil(count / limit);
     if (page > pages) {
       throw new NotFoundError('Invalid page');
@@ -49,6 +47,7 @@ export class CharacterResolver {
         next: page >= pages ? null : page + 1,
         prev: page < 2 ? null : page - 1,
       },
+      // @FIXME
       results: results as any,
     };
   }

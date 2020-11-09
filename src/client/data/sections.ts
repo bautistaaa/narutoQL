@@ -12,12 +12,7 @@ export const sections: Section[] = [
   {
     id: 'introduction',
     text: 'Introduction',
-    items: [
-      {
-        id: 'graphql',
-        text: 'GraphQL',
-      },
-    ],
+    items: [],
   },
   {
     id: 'character',
@@ -54,11 +49,11 @@ export const sections: Section[] = [
         text: 'Get Single Clan',
       },
       {
-        id: 'all-characters',
+        id: 'all-clans',
         text: 'Get All Clans',
       },
       {
-        id: 'filter-characters',
+        id: 'filter-clans',
         text: 'Filter Clans',
       },
     ],
@@ -76,7 +71,7 @@ export const sections: Section[] = [
         text: 'Get Single Village',
       },
       {
-        id: 'all-characters',
+        id: 'all-villages',
         text: 'Get All Villages',
       },
     ],
