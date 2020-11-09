@@ -52,7 +52,8 @@ const CharacterFilter: FC = () => {
   return (
     <>
       <p>
-        A character query can take a <code className="code-text">Filter InputType</code>.
+        A character query can take a{' '}
+        <code className="code-text">Filter InputType</code>.
       </p>
       <p>Available parameters:</p>
       <ul className="show-bullets">
@@ -66,6 +67,7 @@ const CharacterFilter: FC = () => {
           <code className="code-text">village</code> - village of character
         </li>
       </ul>
+      <strong>Sample Query/Response</strong>
       <CodeSnippet language="graphql" code={code} />
       <CodeSnippet language="json" code={json} />
     </>

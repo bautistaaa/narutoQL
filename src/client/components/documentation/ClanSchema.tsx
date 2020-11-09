@@ -1,13 +1,9 @@
 import { FC } from 'react';
-import CodeSnippet from '../CodeSnippet';
+import characterSchema from '../../data/character-schema';
+import DataTable from '../DataTable';
 
-const code = `p { color: red  }`;
-const ClanSchema: FC = () => {
-  return (
-    <pre>
-      <code className="language-css">{code}</code>
-    </pre>
-  );
+const CharacterSchema: FC = () => {
+  return <DataTable data={characterSchema} />;
 };
 
-export default ClanSchema;
+export default CharacterSchema;

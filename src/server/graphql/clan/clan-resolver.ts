@@ -21,6 +21,8 @@ export class ClanResolver {
   ): Promise<Document[]> {
     return ClanModel.find({
       village: new RegExp(village, 'i'),
-    }).exec();
+    })
+      .sort({ name: 1 })
+      .exec();
   }
 }

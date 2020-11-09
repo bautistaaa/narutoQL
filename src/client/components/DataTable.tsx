@@ -6,14 +6,16 @@ const DataTable: FC<{ data: IDataTable }> = ({ data }) => {
   return (
     <table>
       <thead>
-        {headers.map(header => (
-          <th>{header}</th>
-        ))}
+        <tr>
+          {headers.map(header => (
+            <th key={header}>{header}</th>
+          ))}
+        </tr>
       </thead>
       <tbody>
         {body.map(({ key, type, description }) => {
           return (
-            <tr>
+            <tr key={key}>
               <td>{key}</td>
               <td>{type}</td>
               <td>{description}</td>

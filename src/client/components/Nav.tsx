@@ -9,7 +9,12 @@ const Nav = () => {
         <Link href="/">
           <img src="brand2.svg" className={styles.brand} />
         </Link>
-        <ul>
+        <ul className={styles.links}>
+          <li>
+            <a target="_blank" href="/graphql" className={styles.item}>
+              Play
+            </a>
+          </li>
           <li>
             <Link href="/docs">
               <a className={styles.item}>Docs</a>

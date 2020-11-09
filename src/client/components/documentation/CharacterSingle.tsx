@@ -19,15 +19,16 @@ const json = `{
     }
   }
 }
-`
+`;
 const CharacterSingle: FC = () => {
   return (
     <>
       <p>
-        Getting a single character is pretty trivial. We recommend using the{' '}
-        <code className="code-text">characters</code> query to find the
-        character ID you're looking for.
+        Getting a single clan is simple. We recommend using the{' '}
+        <code className="code-text">clans</code> query to find the clan ID
+        you're looking for.
       </p>
+      <strong>Sample Query/Response</strong>
       <CodeSnippet language="graphql" code={code} />
       <CodeSnippet language="json" code={json} />
     </>
