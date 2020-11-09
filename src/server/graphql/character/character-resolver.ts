@@ -17,9 +17,11 @@ export class CharacterResolver {
 
   @Query(() => Characters)
   async characters(
-    @Args(() => GetCharactersArgs)
-    { page = 1, filter: { name, rank, village } }: GetCharactersArgs
+    @Args(() => GetCharactersArgs) getCharacterArgs: GetCharactersArgs
   ): Promise<Characters> {
+    const { page = 1, filter: { name = '', rank = '', village = '' } = {} } =
+      getCharacterArgs || {};
+
     const limit = 20;
     const query = {
       name: new RegExp(name, 'i'),
@@ -34,11 +36,12 @@ export class CharacterResolver {
         .exec(),
       CharacterModel.find(query).countDocuments(),
     ]);
+    console.log(`^^^^^^^^^^^^^^^^^^`);
+    console.log(results);
     const pages = Math.ceil(count / limit);
     if (page > pages) {
       throw new NotFoundError('Invalid page');
     }
-    console.log(results);
     return {
       info: {
         count,
