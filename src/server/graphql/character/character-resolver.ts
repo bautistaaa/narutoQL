@@ -19,8 +19,7 @@ export class CharacterResolver {
   async characters(
     @Args(() => GetCharactersArgs) getCharacterArgs: GetCharactersArgs
   ): Promise<Characters> {
-    const { page = 1, filter: { name = '', rank = '', village = '' } = {} } =
-      getCharacterArgs || {};
+    const { page = 1, filter: { name, rank, village } = {} } = getCharacterArgs;
 
     const limit = 20;
     const query = {
