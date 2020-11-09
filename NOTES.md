@@ -1,4 +1,5 @@
 ### DONE
+
 - character scraper - ~480 characters
 - clan scraper
 - village scraper
@@ -6,12 +7,15 @@
 - clean up data (consolidate columns/fix shitty data manually)
 - ingest into mongodb
 - type mongoose (typegoose)
-
-### In Progress
+- setup static client docs
 - docker stuff
 - droplet setup
 
+### In Progress
+- add pagination to other types (Village/Clan)
+- announce launch?
+
 ### TODO:
-- setup static client docs
+- CDN? Cloudfront/Cloudflare?
 - deploy pipeline
 - pipeline stuff (k8s?)
