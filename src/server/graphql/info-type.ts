@@ -1,18 +1,18 @@
-import { Field, ObjectType } from 'type-graphql';
+import { Field, Int, ObjectType } from 'type-graphql';
 
 @ObjectType()
 class Info {
-  @Field()
+  @Field(() => Int)
   count: number;
 
-  @Field()
+  @Field(() => Int)
   pages: number;
 
-  @Field({ nullable: true })
+  @Field(() => Int, { nullable: true })
   next: number;
 
-  @Field({ nullable: true })
+  @Field(() => Int, { nullable: true })
   prev: number;
 }
 
-export default Info
+export default Info;

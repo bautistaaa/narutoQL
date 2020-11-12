@@ -1,5 +1,5 @@
 import { getModelForClass, prop } from '@typegoose/typegoose';
-import { ArgsType, Field, ID, ObjectType } from 'type-graphql';
+import { Field, ID, ObjectType } from 'type-graphql';
 
 @ObjectType()
 export class Clan {
@@ -25,12 +25,6 @@ export class Clan {
   @prop()
   @Field({ nullable: true })
   village: string;
-}
-
-@ArgsType()
-export class GetClanArgs {
-  @Field({ nullable: true })
-  village?: string;
 }
 
 export const ClanModel = getModelForClass(Clan);

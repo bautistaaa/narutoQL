@@ -12,7 +12,12 @@ export const sections: Section[] = [
   {
     id: 'introduction',
     text: 'Introduction',
-    items: [],
+    items: [
+      {
+        id: 'info',
+        text: 'Info',
+      },
+    ],
   },
   {
     id: 'character',
