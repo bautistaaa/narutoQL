@@ -2,6 +2,7 @@ import { ArgsType, Field, Int, ObjectType } from 'type-graphql';
 import { Character, CharacterInput } from './';
 
 import Info from '../info-type';
+import { DocumentType } from '@typegoose/typegoose';
 
 @ObjectType()
 export class Characters {
@@ -9,7 +10,7 @@ export class Characters {
   info?: Info;
 
   @Field(() => [Character], { nullable: true })
-  results?: [Character];
+  results?: DocumentType<Character>[];
 }
 
 @ArgsType()

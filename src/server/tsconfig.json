@@ -13,7 +13,7 @@
     "rootDir": ".",
     "skipLibCheck": true,
     "target": "es2018",
-    "paths": { "@utils/*": ["./src/utils/*"] }
+    "paths": { "@utils/*": ["./utils/*"] }
   },
   "exclude": ["node_modules", "**/*.spec.ts"],
   "include": ["**/*.ts"]

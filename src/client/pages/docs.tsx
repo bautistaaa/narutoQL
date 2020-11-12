@@ -15,6 +15,7 @@ import ClanFilter from '../components/documentation/ClanFilter';
 import VillageSchema from '../components/documentation/VillageSchema';
 import VillageSingle from '../components/documentation/VillageSingle';
 import VillageAll from '../components/documentation/VillageAll';
+import PaginationSchema from '../components/documentation/PaginationSchema';
 
 const Toggle: FC<{ handleClick: Function }> = props => {
   const { handleClick: callback } = props;
@@ -41,6 +42,9 @@ const Toggle: FC<{ handleClick: Function }> = props => {
   );
 };
 
+/**
+ *I honestly dont give a shit how ugly this is..
+ */
 const Docs = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { width } = useWindowSize();
@@ -79,6 +83,22 @@ const Docs = () => {
             documentation to help you get the most out of the{' '}
             <strong>NarutoQL API.</strong>
           </p>
+          <p>
+            You can query the api at{' '}
+            <code className="code-text">www.narutoql.com/graphql</code>
+          </p>
+
+          <section>
+            <div className={styles.anchor} id="info" />
+            <h2>Info</h2>
+            <p>
+              Use the <code className="code-text">Info</code> type to get the
+              metadata you need for total count and pagination. All types have
+              an <code className="code-text">Info</code> type on them.
+            </p>
+            <h3>Info Schema</h3>
+            <PaginationSchema />
+          </section>
 
           <div className={styles.anchor} id="character" />
           <h2>Character</h2>
