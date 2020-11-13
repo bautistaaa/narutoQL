@@ -1,5 +1,5 @@
 # NarutoQL
-
+![](https://media1.giphy.com/media/rrTXn4zEMp008/giphy.gif)
 ## Introduction
 
 This is a monorepo containing both the client site(documentation) and the graphql server.
