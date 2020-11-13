@@ -10,12 +10,15 @@
 - setup static client docs
 - docker stuff
 - droplet setup
+- announce launch
+- add pagination to other types (Village/Clan)
+- CDN? Cloudfront/Cloudflare?
+- README
 
 ### In Progress
-- add pagination to other types (Village/Clan)
-- announce launch?
 
 ### TODO:
-- CDN? Cloudfront/Cloudflare?
 - deploy pipeline
 - pipeline stuff (k8s?)
+- tsconfig issues with Paths
+- Dockerfile bash scripts

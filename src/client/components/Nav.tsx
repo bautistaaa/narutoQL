@@ -1,8 +1,9 @@
 import Link from 'next/link';
+import { FC } from 'react';
 
 import styles from '../styles/Nav.module.scss';
 
-const Nav = () => {
+const Nav: FC = () => {
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>

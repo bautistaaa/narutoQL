@@ -88,17 +88,15 @@ const Docs = () => {
             <code className="code-text">www.narutoql.com/graphql</code>
           </p>
 
-          <section>
-            <div className={styles.anchor} id="info" />
-            <h2>Info</h2>
-            <p>
-              Use the <code className="code-text">Info</code> type to get the
-              metadata you need for total count and pagination. All types have
-              an <code className="code-text">Info</code> type on them.
-            </p>
-            <h3>Info Schema</h3>
-            <PaginationSchema />
-          </section>
+          <div className={styles.anchor} id="info" />
+          <h2>Info</h2>
+          <p>
+            Use the <code className="code-text">Info</code> type to get the
+            metadata you need for total count and pagination. All types have an{' '}
+            <code className="code-text">Info</code> type on them.
+          </p>
+          <h3>Info Schema</h3>
+          <PaginationSchema />
 
           <div className={styles.anchor} id="character" />
           <h2>Character</h2>
@@ -107,28 +105,20 @@ const Docs = () => {
             sorted by name.
           </p>
 
-          <section>
-            <div className={styles.anchor} id="character-schema" />
-            <h3>Character Schema</h3>
-            <CharacterSchema />
-          </section>
+          <div className={styles.anchor} id="character-schema" />
+          <h3>Character Schema</h3>
+          <CharacterSchema />
           <div className={styles.anchor} id="single-character" />
           <h3>Get Single Character</h3>
-          <div>
-            <CharacterSingle />
-          </div>
+          <CharacterSingle />
 
           <div className={styles.anchor} id="all-characters" />
           <h3>Get All Characters</h3>
-          <div>
-            <CharacterAll />
-          </div>
+          <CharacterAll />
 
           <div className={styles.anchor} id="filter-characters" />
           <h3>Filter Characters</h3>
-          <div>
-            <CharacterFilter />
-          </div>
+          <CharacterFilter />
 
           <div className={styles.anchor} id="clan" />
           <h2>Clan</h2>
@@ -140,21 +130,15 @@ const Docs = () => {
 
           <div className={styles.anchor} id="single-clan" />
           <h3>Get Single Clan</h3>
-          <div>
-            <ClanSingle />
-          </div>
+          <ClanSingle />
 
           <div className={styles.anchor} id="all-clans" />
           <h3>Get All Clans</h3>
-          <div>
-            <ClanAll />
-          </div>
+          <ClanAll />
 
           <div className={styles.anchor} id="filter-clans" />
           <h3>Filter Clans</h3>
-          <div>
-            <ClanFilter />
-          </div>
+          <ClanFilter />
 
           <div className={styles.anchor} id="village" />
           <h2>Village</h2>
@@ -162,21 +146,15 @@ const Docs = () => {
 
           <div className={styles.anchor} id="village-schema" />
           <h3>Village Schema</h3>
-          <div>
-            <VillageSchema />
-          </div>
+          <VillageSchema />
 
           <div className={styles.anchor} id="single-schema" />
           <h3>Get Single Village</h3>
-          <div>
-            <VillageSingle />
-          </div>
+          <VillageSingle />
 
           <div className={styles.anchor} id="all-villages" />
           <h3>Get All Villages</h3>
-          <div>
-            <VillageAll />
-          </div>
+          <VillageAll />
         </article>
       </div>
     </div>
