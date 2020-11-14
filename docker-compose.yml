@@ -28,6 +28,7 @@ services:
       - mongo
     environment:
       DATABASE_URL: mongodb://mongo:27017/naruto
+      PORT: 8000
   mongo:
     container_name: mongo
     volumes:
