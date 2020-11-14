@@ -14,6 +14,10 @@ export const sections: Section[] = [
     text: 'Introduction',
     items: [
       {
+        id: 'contribute',
+        text: 'Contribute',
+      },
+      {
         id: 'info',
         text: 'Info',
       },

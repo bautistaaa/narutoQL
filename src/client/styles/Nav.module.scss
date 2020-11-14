@@ -15,16 +15,21 @@
   height: 100%;
   padding: 0 20px;
   .links {
+    display: flex;
+    align-items: center;
     li {
-      display: inline-block;
       margin-left: 10px;
     }
   }
+  .github,
   .brand {
     cursor: pointer;
   }
   .item {
     font-weight: bold;
     font-size: 1.2em;
+  }
+  .github {
+    margin-left: 15px;
   }
 }
