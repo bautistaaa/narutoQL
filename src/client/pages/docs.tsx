@@ -87,6 +87,14 @@ const Docs = () => {
             You can query the api at{' '}
             <code className="code-text">www.narutoql.com/graphql</code>
           </p>
+          <h3>Contribute</h3>
+          <p>
+            This could definitely use some improvements. Feel free to fork the
+            repo{' '}
+            <a href="https://github.com/bautistaaa/narutoQL" target="_blank">
+              <strong>here</strong>
+            </a>
+          </p>
 
           <div className={styles.anchor} id="info" />
           <h2>Info</h2>

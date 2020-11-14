@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:title" content="NarutoQL" />
         <meta property="og:description" content="Naruto GraphQL API" />
-        <meta property="og:image" content="https://imgur.com/a/MuomDk0" />
+        <meta property="og:image" content="http://imgur.com/a/MuomDk0" />
       </Head>
       <GoogleTag />
 
