@@ -2,6 +2,8 @@
 ![](https://media1.giphy.com/media/rrTXn4zEMp008/giphy.gif)
 ## Introduction
 
+This was built live on [twitch](https://www.twitch.tv/trash_dev) so it is far from perfect.
+
 This is a monorepo containing both the client site(documentation) and the graphql server.
 
 You can also view the live [documentation](https://narutoql.com/docs)
