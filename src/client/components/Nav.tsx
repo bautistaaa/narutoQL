@@ -21,6 +21,20 @@ const Nav: FC = () => {
               <a className={styles.item}>Docs</a>
             </Link>
           </li>
+          <li>
+            <a
+              href="https://github.com/bautistaaa/narutoQL"
+              target="_blank"
+              className={styles.item}
+            >
+              <img
+                src="github.svg"
+                className={styles.github}
+                height="30"
+                width="30"
+              />
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
