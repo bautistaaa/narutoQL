@@ -12,6 +12,4 @@ COPY . .
 
 EXPOSE 8000
 
-#RUN npm run seed
-
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "dev"]
