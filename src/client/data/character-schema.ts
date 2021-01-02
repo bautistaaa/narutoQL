@@ -1,4 +1,4 @@
-import { DataTable } from '../shared/interfaces/IDataTable';
+import { DataTable } from '../shared/interfaces/DataTable';
 
 const characterSchema: DataTable = {
   headers: ['Field', 'Type', 'Description'],
