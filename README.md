@@ -4,8 +4,6 @@
 
 This was built live on [twitch](https://www.twitch.tv/trash_dev) so it is far from perfect.
 
-This is a monorepo containing both the client site(documentation) and the graphql server.
-
 You can also view the live [documentation](https://narutoql.com/docs)
 
 ## Getting Started
@@ -18,6 +16,10 @@ Make sure you have docker installed.
 `npm run dev` in `src/client` to run [NextJS](https://nextjs.org/) app
 
 `npm run dev` in `src/server` to run [Express](https://expressjs.com/) app
+
+### Seed Data
+- Docker flow: `docker exec` into node container and run `npm run seed`
+- Or just `npm run seed` in `server` directory
 
 ## Resources
 
