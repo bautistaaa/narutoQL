@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { DataTable } from '../shared/interfaces/IDataTable';
+import { DataTable } from '../shared/interfaces/DataTable';
 
 const DataTableComponent: FC<{ data: DataTable }> = ({ data }) => {
   const { headers, body } = data;
