@@ -20,12 +20,23 @@ export class CharacterResolver {
   async characters(
     @Args(() => GetCharactersArgs) getCharacterArgs: GetCharactersArgs
   ): Promise<Characters> {
-    const { page = 1, filter: { name, rank, village } = {} } = getCharacterArgs;
+    const {
+      page = 1,
+      filter: { name, rank: ranks = [], village: villages = [] } = {},
+    } = getCharacterArgs;
+
+    const villageRegexes = villages.map(
+      village => new RegExp(village || '', 'i')
+    );
+    const rankRegexes = ranks.map(rank => new RegExp(rank || '', 'i'));
 
     const query = {
       name: new RegExp(name, 'i'),
-      rank: new RegExp(rank, 'i'),
-      village: new RegExp(village, 'i'),
+      rank: rankRegexes.length > 0 ? { $in: rankRegexes } : new RegExp('', 'i'),
+      village:
+        villageRegexes.length > 0
+          ? { $in: villageRegexes }
+          : new RegExp('', 'i'),
     };
     const [results, count] = await Promise.all([
       CharacterModel.find(query)
@@ -37,7 +48,7 @@ export class CharacterResolver {
     ]);
     const pages = Math.ceil(count / limit);
 
-    if (page > pages) {
+    if (page > pages && pages !== 0) {
       throw new NotFoundError('Invalid page');
     }
 

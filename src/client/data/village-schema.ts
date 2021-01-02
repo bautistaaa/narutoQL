@@ -1,6 +1,6 @@
-import { IDataTable } from '../shared/interfaces/IDataTable';
+import { DataTable } from '../shared/interfaces/IDataTable';
 
-const villageSchema: IDataTable = {
+const villageSchema: DataTable = {
   headers: ['Field', 'Type', 'Description'],
   body: [
     {

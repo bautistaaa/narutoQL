@@ -1,9 +1,12 @@
 import Head from 'next/head';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import GoogleTag from '../components/GoogleTag';
 import Layout from '../components/Layout';
 import Nav from '../components/Nav';
 import '../styles/index.scss';
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -18,8 +21,10 @@ function MyApp({ Component, pageProps }) {
       <GoogleTag />
 
       <Layout>
-        <Nav />
-        <Component {...pageProps} />
+        <QueryClientProvider client={queryClient}>
+          <Nav />
+          <Component {...pageProps} />
+        </QueryClientProvider>
       </Layout>
     </>
   );

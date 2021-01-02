@@ -1,0 +1,15 @@
+export enum Villages {
+  'cloud' = 'cloud.svg',
+  'grass' = 'grass.svg',
+  'springs' = 'springs.svg',
+  'leaf' = 'brand2.svg',
+  'mist' = 'mist.svg',
+  'flower' = 'flower.png',
+  'rain' = 'rain.svg',
+  'sound' = 'sound.svg',
+  'star' = 'star.png',
+  'rock' = 'earth.svg',
+  'sand' = 'sand.svg',
+  'waterfall' = 'waterfall.svg',
+  'tides' = 'whirling-tides.svg',
+}

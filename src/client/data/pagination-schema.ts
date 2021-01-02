@@ -1,6 +1,6 @@
-import { IDataTable } from '../shared/interfaces/IDataTable';
+import { DataTable } from '../shared/interfaces/IDataTable';
 
-const paginationSchema: IDataTable = {
+const paginationSchema: DataTable = {
   headers: ['Field', 'Type', 'Description'],
   body: [
     {
