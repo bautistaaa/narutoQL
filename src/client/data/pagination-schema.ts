@@ -1,4 +1,4 @@
-import { DataTable } from '../shared/interfaces/IDataTable';
+import { DataTable } from '../shared/interfaces/DataTable';
 
 const paginationSchema: DataTable = {
   headers: ['Field', 'Type', 'Description'],
