@@ -1,0 +1,70 @@
+.drawer {
+  position: fixed;
+  padding: 20px;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  z-index: 301;
+  font-size: 1.2rem;
+  .input-name {
+    padding: 10px;
+    font-size: 1.2rem;
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.4);
+    }
+  }
+  .filter-section {
+    margin-bottom: 20px;
+  }
+  .filter-name {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    letter-spacing: 1.1px;
+  }
+  .name {
+    margin-bottom: 15px;
+  }
+  .filter-grid {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
+    list-style-type: none;
+  }
+  .filter-button {
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #d6d6d6;
+    background: none;
+    outline: none;
+  }
+  .button-active {
+    background: red;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 300;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  padding: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+}

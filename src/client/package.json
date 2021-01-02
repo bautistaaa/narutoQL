@@ -9,6 +9,7 @@
     "serve": "npm run build && npm start"
   },
   "dependencies": {
+    "body-scroll-lock": "^3.1.5",
     "classnames": "^2.2.6",
     "graphql": "^15.4.0",
     "graphql-request": "^3.4.0",

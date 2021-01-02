@@ -7,6 +7,7 @@
   height: 50px;
   width: 100%;
   background: #fff;
+  z-index: 200;
 }
 .nav {
   display: flex;
@@ -21,6 +22,7 @@
       margin-left: 10px;
     }
   }
+  .explore,
   .github,
   .brand {
     cursor: pointer;
@@ -28,6 +30,13 @@
   .item {
     font-weight: bold;
     font-size: 1.2em;
+  }
+  .explore {
+    background: #ef8755;
+    padding: 5px 10px;
+    display: inline-block;
+    color: white;
+    border-radius: 5px;
   }
   .github {
     margin-left: 15px;

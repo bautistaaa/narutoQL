@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { IDataTable } from '../shared/interfaces/IDataTable';
+import { DataTable } from '../shared/interfaces/IDataTable';
 
-const DataTable: FC<{ data: IDataTable }> = ({ data }) => {
+const DataTableComponent: FC<{ data: DataTable }> = ({ data }) => {
   const { headers, body } = data;
   return (
     <table>
@@ -27,4 +27,4 @@ const DataTable: FC<{ data: IDataTable }> = ({ data }) => {
   );
 };
 
-export default DataTable;
+export default DataTableComponent;

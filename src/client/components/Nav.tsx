@@ -22,6 +22,13 @@ const Nav: FC = () => {
             </Link>
           </li>
           <li>
+            <Link href="/explorer">
+              <span className={[styles.explore, styles.item].join(' ')}>
+                Explore
+              </span>
+            </Link>
+          </li>
+          <li>
             <a
               href="https://github.com/bautistaaa/narutoQL"
               target="_blank"

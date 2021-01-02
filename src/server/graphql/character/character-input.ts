@@ -6,9 +6,9 @@ export class CharacterInput {
   @Field({ nullable: true })
   name?: string;
 
-  @Field({ nullable: true })
-  rank?: string;
+  @Field(() => [String],{ nullable: true })
+  rank?: string[];
 
-  @Field({ nullable: true })
-  village?: string;
+  @Field(() => [String],{ nullable: true })
+  village?: string[];
 }
