@@ -4,7 +4,8 @@ services:
     container_name: next
     restart: always
     build:
-      context: ./src/client
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - './src/client:/client'
     ports:
