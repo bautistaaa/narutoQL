@@ -9,7 +9,15 @@ export default function Home() {
           <h1>
             NarutoQL<span className={styles['blinking-cursor']}>|</span>
           </h1>
-          <div className={styles.author}>by: trash_dev</div>
+          <a
+            className={styles.author}
+            href="https://www.twitch.com/trash_dev"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <img src="twitch.svg" height="20" alt="" />
+            by: trash_dev
+          </a>
         </div>
       </div>
     </div>

@@ -22,9 +22,16 @@
       font-weight: bold;
     }
     .author {
+      text-decoration: none;
+      color: black;
+      display: flex;
+      align-items: center;
       position: relative;
       left: 10px;
       font-weight: 200;
+      img {
+        margin-right: 5px;
+      }
     }
   }
 }
