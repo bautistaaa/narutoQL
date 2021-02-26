@@ -1,11 +1,65 @@
 import { Document } from 'mongoose';
-import { Resolver, Arg, Query, Args } from 'type-graphql';
-import { Character, Characters, CharacterModel, GetCharactersArgs } from './';
+import {
+  Resolver,
+  Arg,
+  Query,
+  Args,
+  Mutation,
+  Root,
+  FieldResolver,
+  Ctx,
+} from 'type-graphql';
+import {
+  Character,
+  Characters,
+  CharacterModel,
+  GetCharactersArgs,
+  UpdateCharacterInput,
+} from './';
 import NotFoundError from '../../utils/errors';
 import { limit } from '../../utils/constants';
+import { Context } from 'vm';
 
-@Resolver()
+const createChange = (object: unknown) =>
+  Object.entries(object).map(([k, v]) => {
+    return {
+      key: k,
+      newValue: v,
+    };
+  });
+
+//(root, args, context)
+@Resolver(() => Character)
 export class CharacterResolver {
+  //@FieldResolver()
+  //history(@Root() character: Character, @Ctx() ctx: Context) {
+  //return character.history;
+  //}
+
+  @FieldResolver()
+  drafts(@Root() character: Character, @Ctx() ctx: Context) {
+    console.log(ctx);
+    return character.drafts.flat();
+  }
+
+  @Mutation(() => Character)
+  async updateCharacter(
+    @Arg('data', () => UpdateCharacterInput)
+    updateCharacter: UpdateCharacterInput
+  ): Promise<Character> {
+    const { _id, ...datas } = updateCharacter;
+    const changes = createChange(datas);
+    const newDraft = { timeStamp: new Date(), changes };
+    const results = await CharacterModel.findOneAndUpdate(
+      { _id },
+      {
+        // @ts-ignore
+        $push: { drafts: newDraft },
+      }
+    );
+    return results;
+  }
+
   @Query(() => Character)
   async character(@Arg('id') id: string): Promise<Document> {
     try {
@@ -46,6 +100,7 @@ export class CharacterResolver {
         .exec(),
       CharacterModel.find(query).countDocuments(),
     ]);
+
     const pages = Math.ceil(count / limit);
 
     if (page > pages && pages !== 0) {

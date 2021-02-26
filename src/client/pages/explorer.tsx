@@ -1,14 +1,17 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { useInfiniteQuery } from 'react-query';
 import { request, gql } from 'graphql-request';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import styles from '../styles/Explorer.module.scss';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
 import Card from '../components/Card';
+import useClickOutside from '../hooks/useClickOutside';
 import useDebounce from '../hooks/useDebouncedValue';
 import FilterDrawer from '../components/FilterDrawer';
 import FilterBar from '../components/FilterBar';
 import { Filters, Info, Result } from '../shared/interfaces';
+import EditDrawer from '../components/EditDrawer';
 
 const endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/graphql`;
 
@@ -72,15 +75,40 @@ const countFilters = (filters: Filters): number => {
 
   return count;
 };
-export default function Explorer() {
+const Explorer = () => {
   const [filters, setFilters] = useState<Filters>({
     name: '',
     ranks: [],
     villages: [],
   });
-  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isEditDrawerOpen, setIsEditDrawerOpen] = useState(false);
+  const [selectedCharacter, setSelectedCharacter] = useState<
+    Result | undefined
+  >();
   const debouncedFilters = useDebounce(filters, 250);
   const filterCount = countFilters(filters);
+  const editableDrawerRef = useRef();
+
+  useClickOutside(editableDrawerRef, () => setIsEditDrawerOpen(false));
+
+  // @TODO: WTF?
+  useEffect(() => {
+    if (!isEditDrawerOpen) {
+      setSelectedCharacter(undefined);
+    }
+  }, [isEditDrawerOpen]);
+  useEffect(() => {
+    const targetElement = document.querySelector('main');
+    if (isEditDrawerOpen) {
+      disableBodyScroll(targetElement);
+    } else {
+      enableBodyScroll(targetElement);
+    }
+    return () => {
+      enableBodyScroll(targetElement);
+    };
+  }, [isEditDrawerOpen]);
 
   const {
     data,
@@ -101,24 +129,29 @@ export default function Explorer() {
 
   return (
     <>
-      <pre>{isDrawerOpen}</pre>
+      <pre>{isFilterOpen}</pre>
       <FilterBar filters={filters} setFilters={setFilters} />
       <FilterDrawer
         filters={filters}
         setFilters={setFilters}
-        isOpen={isDrawerOpen}
-        toggle={setIsDrawerOpen}
+        isOpen={isFilterOpen}
+        toggle={setIsFilterOpen}
       />
       <div className={styles.results}>
         <div className={styles['card-grid']}>
           {data?.pages.map((group: CharacterResponse, i: number) => {
-            if(group.characters.results.length === 0) {
-              return 'NO RESULTS...'
+            if (group.characters.results.length === 0) {
+              return 'NO RESULTS...';
             }
             return (
               <Fragment key={i}>
                 {group.characters?.results.map((result: Result, i: number) => (
-                  <Card key={`card-${i}`} result={result} />
+                  <Card
+                    key={`card-${i}`}
+                    result={result}
+                    setIsDrawerOpen={setIsEditDrawerOpen}
+                    setSelectedCharacter={setSelectedCharacter}
+                  />
                 ))}
               </Fragment>
             );
@@ -127,7 +160,7 @@ export default function Explorer() {
       </div>
       <button
         className={styles['filter-button']}
-        onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+        onClick={() => setIsFilterOpen(!isFilterOpen)}
       >
         Filter
         {filterCount > 0 && (
@@ -146,6 +179,13 @@ export default function Explorer() {
           ? 'Load More'
           : 'Nothing more to load'}
       </button>
+        <EditDrawer
+          ref={editableDrawerRef}
+          isOpen={isEditDrawerOpen}
+          character={selectedCharacter}
+        />
     </>
   );
-}
+};
+
+export default Explorer;

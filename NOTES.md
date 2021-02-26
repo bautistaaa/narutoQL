@@ -14,11 +14,23 @@
 - add pagination to other types (Village/Clan)
 - CDN? Cloudfront/Cloudflare?
 - README
+- update form
+- card ui for updates
+- updated schema for drafts/history
 
 ### In Progress
+- permission field resolver (drafts/history)
+- update resolvers to support history
 
 ### TODO:
 - deploy pipeline
 - pipeline stuff (k8s?)
-- tsconfig issues with Paths
 - Dockerfile bash scripts
+- make ui not look like shit (form)
+- create review dashboard
+
+
+
+
+
+

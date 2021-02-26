@@ -1,0 +1,49 @@
+.wrapper {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 500px;
+  background: white;
+  padding: 30px;
+  transform: translateX(500px);
+  transition: transform 0.4s;
+  z-index: 500;
+  &-open {
+    transform: translateX(0);
+  }
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 400;
+}
+
+.input {
+  margin-bottom: 10px;
+  label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+
+  input {
+    padding: 5px;
+    width: 100%;
+  }
+}
+
+.submit {
+  padding: 5px 10px;
+  background: none;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 3px;
+  font-size: 1.1rem;
+}

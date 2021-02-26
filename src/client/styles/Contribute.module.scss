@@ -1,0 +1,34 @@
+.wrapper {
+  height: 100%;
+  width: 100%;
+  font-weight: 300;
+  padding-top: 50px;
+}
+
+.header {
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.blurb {
+  text-align: center;
+  > p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+}
+
+.explore,
+.attention {
+  font-weight: bold;
+}
+
+.explore {
+  cursor: pointer;
+  background: #ef8755;
+  padding: 5px 10px;
+  display: inline-block;
+  color: white;
+  border-radius: 5px;
+}

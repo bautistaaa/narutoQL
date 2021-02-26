@@ -49,126 +49,122 @@ const FilterDrawer: FC<{
           <img width="20" height="20" src="cancel.svg" />
         </button>
         <nav className={styles.filters}>
-          <div>
-            <ul>
-              <li className={[styles['filter-section'], styles.name].join(' ')}>
-                <p className={styles['filter-name']}>
-                  <strong>Name</strong>
-                </p>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  value={filters.name}
-                  className={styles['input-name']}
-                  placeholder="ex: Uchiha Sasuke"
-                  onChange={e =>
-                    setFilters((state: Filters) => {
-                      return {
-                        ...state,
-                        name: e.target.value,
-                      };
-                    })
-                  }
-                />
-              </li>
-              <li className={styles['filter-section']}>
-                <p className={styles['filter-name']}>
-                  <strong>Village</strong>
-                </p>
-                <ul className={styles['filter-grid']}>
-                  {Object.entries(VILLAGE_MAP).map((village, i) => {
-                    const [, { color, filterValue }] = village;
-                    const isActive = filters.villages.includes(filterValue);
-                    const overrides = {
-                      background: isActive ? color : null,
+          <ul>
+            <li className={[styles['filter-section'], styles.name].join(' ')}>
+              <p className={styles['filter-name']}>
+                <strong>Name</strong>
+              </p>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                value={filters.name}
+                className={styles['input-name']}
+                placeholder="ex: Uchiha Sasuke"
+                onChange={e =>
+                  setFilters((state: Filters) => {
+                    return {
+                      ...state,
+                      name: e.target.value,
                     };
+                  })
+                }
+              />
+            </li>
+            <li className={styles['filter-section']}>
+              <p className={styles['filter-name']}>
+                <strong>Village</strong>
+              </p>
+              <ul className={styles['filter-grid']}>
+                {Object.entries(VILLAGE_MAP).map((village, i) => {
+                  const [, { color, filterValue }] = village;
+                  const isActive = filters.villages.includes(filterValue);
+                  const overrides = {
+                    background: isActive ? color : null,
+                  };
 
-                    return (
-                      <li key={`village-filter-item-${i}`}>
-                        <button
-                          style={overrides}
-                          className={styles['filter-button']}
-                          onClick={() =>
-                            setFilters((state: Filters) => {
-                              const shouldFilterBy = !state.villages.includes(
-                                filterValue
-                              );
-                              if (shouldFilterBy) {
-                                return {
-                                  ...state,
-                                  villages: [...state.villages, filterValue],
-                                };
-                              }
-
+                  return (
+                    <li key={`village-filter-item-${i}`}>
+                      <button
+                        style={overrides}
+                        className={styles['filter-button']}
+                        onClick={() =>
+                          setFilters((state: Filters) => {
+                            const shouldFilterBy = !state.villages.includes(
+                              filterValue
+                            );
+                            if (shouldFilterBy) {
                               return {
                                 ...state,
-                                villages: state.villages.filter(
-                                  village => village !== filterValue
-                                ),
+                                villages: [...state.villages, filterValue],
                               };
-                            })
-                          }
-                        >
-                          {filterValue}{' '}
-                          <span
-                            style={{
-                              display: 'inline-block',
-                              height: '15px',
-                              width: '15px',
-                              borderRadius: '15px',
-                              background: `${color}`,
-                            }}
-                          />
-                        </button>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </li>
-              <li className={styles['filter-section']}>
-                <p className={styles['filter-name']}>
-                  <strong>Rank</strong>
-                </p>
-                <ul className={styles['filter-grid']}>
-                  {RANKS.map((rank, i) => {
-                    const isActive = filters.ranks.includes(rank);
-                    const overrides = {
-                      background: isActive ? '#f3f3f3' : null,
-                    };
-                    return (
-                      <li key={`rank-filter-item-${i}`}>
-                        <button
-                          style={overrides}
-                          className={styles['filter-button']}
-                          onClick={() =>
-                            setFilters((state: Filters) => {
-                              const shouldFilterBy = !state.ranks.includes(
-                                rank
-                              );
-                              if (shouldFilterBy) {
-                                return {
-                                  ...state,
-                                  ranks: [...state.ranks, rank],
-                                };
-                              }
+                            }
 
+                            return {
+                              ...state,
+                              villages: state.villages.filter(
+                                village => village !== filterValue
+                              ),
+                            };
+                          })
+                        }
+                      >
+                        {filterValue}{' '}
+                        <span
+                          style={{
+                            display: 'inline-block',
+                            height: '15px',
+                            width: '15px',
+                            borderRadius: '15px',
+                            background: `${color}`,
+                          }}
+                        />
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </li>
+            <li className={styles['filter-section']}>
+              <p className={styles['filter-name']}>
+                <strong>Rank</strong>
+              </p>
+              <ul className={styles['filter-grid']}>
+                {RANKS.map((rank, i) => {
+                  const isActive = filters.ranks.includes(rank);
+                  const overrides = {
+                    background: isActive ? '#f3f3f3' : null,
+                  };
+                  return (
+                    <li key={`rank-filter-item-${i}`}>
+                      <button
+                        style={overrides}
+                        className={styles['filter-button']}
+                        onClick={() =>
+                          setFilters((state: Filters) => {
+                            const shouldFilterBy = !state.ranks.includes(rank);
+                            if (shouldFilterBy) {
                               return {
                                 ...state,
-                                ranks: state.ranks.filter(r => r !== rank),
+                                ranks: [...state.ranks, rank],
                               };
-                            })
-                          }
-                        >
-                          {rank}{' '}
-                        </button>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </li>
-            </ul>
-          </div>
+                            }
+
+                            return {
+                              ...state,
+                              ranks: state.ranks.filter(r => r !== rank),
+                            };
+                          })
+                        }
+                      >
+                        {rank}{' '}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </li>
+          </ul>
         </nav>
       </div>
     </>

@@ -9,8 +9,9 @@
   background: #c9c9c9;
   overflow: hidden;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  bottom: 5px;
+  left: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   img {
     width: 25px;
   }

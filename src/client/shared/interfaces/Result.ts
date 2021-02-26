@@ -1,4 +1,5 @@
 interface Result {
+  _id: number;
   age: number;
   avatarSrc: string;
   description: string;

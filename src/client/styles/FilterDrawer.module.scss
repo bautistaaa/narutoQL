@@ -6,8 +6,12 @@
   height: 100%;
   width: 100%;
   background: #fff;
-  z-index: 301;
   font-size: 1.2rem;
+  z-index: 2000;
+  nav {
+    overflow: auto;
+    height: 100%;
+  }
   .input-name {
     padding: 10px;
     font-size: 1.2rem;
@@ -34,6 +38,7 @@
   }
   .filter-button {
     cursor: pointer;
+    border-radius: 3px;
     font-size: 1.2rem;
     width: 100%;
     padding: 15px;
@@ -41,6 +46,7 @@
     border: 1px solid #d6d6d6;
     background: none;
     outline: none;
+    transition: background 0.5s;
   }
   .button-active {
     background: red;
