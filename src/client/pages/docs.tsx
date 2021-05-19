@@ -78,7 +78,7 @@ const Docs = () => {
           <div className={styles.anchor} id="introduction" />
           <h2>Introduction</h2>
           <p>
-            Not sure how you ended up here? Cool, either are we but there is a
+            Not sure how you ended up here? Cool, neither are we but there is a
             strong assumption you are interested in graphQL or anime. Use this
             documentation to help you get the most out of the{' '}
             <strong>NarutoQL API.</strong>
