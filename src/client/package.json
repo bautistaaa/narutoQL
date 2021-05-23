@@ -9,25 +9,33 @@
     "serve": "npm run build && npm start"
   },
   "dependencies": {
+    "@types/mui-datatables": "^3.7.0",
+    "aws-sdk": "^2.862.0",
     "body-scroll-lock": "^3.1.5",
     "classnames": "^2.2.6",
     "graphql": "^15.4.0",
     "graphql-request": "^3.4.0",
+    "js-cookie": "^2.2.1",
     "next": "10.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-dropzone": "^11.3.1",
+    "react-google-recaptcha": "^2.1.0",
     "react-hook-form": "^6.15.4",
     "react-modal": "^3.12.1",
     "react-query": "^3.5.5",
     "react-syntax-highlighter": "^15.3.0",
     "react-table": "^7.6.2",
+    "react-toastify": "^7.0.3",
     "sass": "^1.28.0"
   },
   "devDependencies": {
     "@types/body-scroll-lock": "^2.6.1",
     "@types/classnames": "^2.2.11",
+    "@types/js-cookie": "^2.2.6",
     "@types/node": "^14.14.6",
     "@types/react": "^16.9.55",
+    "@types/react-google-recaptcha": "^2.1.0",
     "@types/react-modal": "^3.12.0",
     "typescript": "^4.0.5"
   }

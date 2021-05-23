@@ -1,17 +1,18 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { useInfiniteQuery } from 'react-query';
-import { request, gql } from 'graphql-request';
+import { GraphQLClient, gql } from 'graphql-request';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import styles from '../styles/Explorer.module.scss';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
+import Badge from '../components/Badge';
 import Card from '../components/Card';
-import useClickOutside from '../hooks/useClickOutside';
 import useDebounce from '../hooks/useDebouncedValue';
 import FilterDrawer from '../components/FilterDrawer';
 import FilterBar from '../components/FilterBar';
 import { Filters, Info, Result } from '../shared/interfaces';
 import EditDrawer from '../components/EditDrawer';
+import { truncateString } from '../shared/utils';
 
 const endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/graphql`;
 
@@ -36,8 +37,11 @@ const fetchCharacters = ({
   const [, filters] = queryKey;
   const villages = stringBuilder(filters.villages);
   const ranks = stringBuilder(filters.ranks);
-  return request(
-    endpoint,
+  const client = new GraphQLClient(endpoint, {
+    credentials: 'include',
+    mode: 'cors',
+  });
+  return client.request(
     gql`
           query {
             characters(page: ${pageParam}, filter: { rank: [${ranks}], village: [${villages}], name: "${filters.name}" }) {
@@ -89,8 +93,6 @@ const Explorer = () => {
   const debouncedFilters = useDebounce(filters, 250);
   const filterCount = countFilters(filters);
   const editableDrawerRef = useRef();
-
-  useClickOutside(editableDrawerRef, () => setIsEditDrawerOpen(false));
 
   // @TODO: WTF?
   useEffect(() => {
@@ -145,14 +147,58 @@ const Explorer = () => {
             }
             return (
               <Fragment key={i}>
-                {group.characters?.results.map((result: Result, i: number) => (
-                  <Card
-                    key={`card-${i}`}
-                    result={result}
-                    setIsDrawerOpen={setIsEditDrawerOpen}
-                    setSelectedCharacter={setSelectedCharacter}
-                  />
-                ))}
+                {group.characters?.results.map((result: Result, i: number) => {
+                  const {
+                    name,
+                    age,
+                    village,
+                    rank,
+                    avatarSrc,
+                    description,
+                  } = result;
+                  return (
+                    <Card key={`card-${i}`} result={result}>
+                      <div
+                        className={styles.edit}
+                        onClick={() => {
+                          setIsEditDrawerOpen(true);
+                          setSelectedCharacter(result);
+                        }}
+                      >
+                        <img src="more.svg" />
+                      </div>
+                      <div className={styles.avatar}>
+                        <img
+                          className={styles.img}
+                          loading="lazy"
+                          src={avatarSrc}
+                          alt={name}
+                        />
+                        <Badge village={result?.village} />
+                      </div>
+                      <p className={styles.p}>
+                        <span className={styles.label}>Name:</span> {name}
+                      </p>
+                      <p className={styles.p}>
+                        <span className={styles.label}>Village:</span>{' '}
+                        <span className={styles.capitalize}>
+                          {village || '?'}
+                        </span>
+                      </p>
+                      <p className={styles.p}>
+                        <span className={styles.label}>Age:</span> {age || '?'}
+                      </p>
+                      <p className={styles.p}>
+                        <span className={styles.label}>Rank:</span>{' '}
+                        {rank || '?'}
+                      </p>
+                      <p className={styles.p}>
+                        <span className={styles.label}>Description:</span>{' '}
+                        {truncateString(description, 100) || '?'}
+                      </p>
+                    </Card>
+                  );
+                })}
               </Fragment>
             );
           })}
@@ -179,11 +225,12 @@ const Explorer = () => {
           ? 'Load More'
           : 'Nothing more to load'}
       </button>
-        <EditDrawer
-          ref={editableDrawerRef}
-          isOpen={isEditDrawerOpen}
-          character={selectedCharacter}
-        />
+      <EditDrawer
+        ref={editableDrawerRef}
+        isOpen={isEditDrawerOpen}
+        setIsOpen={setIsEditDrawerOpen}
+        character={selectedCharacter}
+      />
     </>
   );
 };

@@ -11,10 +11,11 @@ body,
   height: 100%;
 }
 
+html,
 body {
-  font-family: 'Roboto Mono', monospace;
-  color: #444444;
-  font-size: 16px;
+  font-family: 'Roboto Mono', monospace !important;
+  color: #444444 !important;
+  font-size: 16px !important;
 }
 
 *,
@@ -30,37 +31,6 @@ a {
 
 strong {
   font-weight: 500;
-}
-
-table {
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 3.25em;
-  font-size: 1em;
-  line-height: 1.625em;
-  border-collapse: collapse;
-  width: 100%;
-  thead {
-    text-align: left;
-    font-weight: 400;
-  }
-  td,
-  th {
-    padding: 15px;
-    vertical-align: middle;
-    &:nth-child(1) {
-      padding-left: 0;
-    }
-  }
-  thead,
-  tr {
-    border-bottom: 1px solid #d6d6d6;
-  }
 }
 
 .code-text {

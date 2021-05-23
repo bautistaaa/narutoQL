@@ -22,6 +22,12 @@ export class GetCharactersArgs {
   filter?: CharacterInput;
 }
 
+@ArgsType()
+export class GetCharacterDraftsArgs {
+  @Field(() => Int, { nullable: true })
+  page?: number;
+}
+
 @InputType()
 export class UpdateCharacterInput implements Partial<Character> {
   @Field(() => Int, { nullable: true })
@@ -59,4 +65,42 @@ export class UpdateCharacterInput implements Partial<Character> {
 
   @Field({ nullable: true })
   village?: string;
+}
+
+@InputType()
+export class ChangeInput {
+  @Field()
+  key: string;
+
+  @Field()
+  newValue: string;
+}
+
+@InputType()
+export class CharacterDraftInput {
+  @Field()
+  id: string;
+
+  @Field()
+  timeStamp: string;
+
+  @Field(() => [ChangeInput])
+  changes: ChangeInput[];
+}
+
+@InputType()
+export class ApproveChangeInput {
+  @Field()
+  id: string;
+
+  @Field(() => CharacterDraftInput)
+  draft: CharacterDraftInput;
+}
+
+@InputType()
+export class RejectChangeInput {
+  @Field()
+  id: string;
+  @Field()
+  draftId: string;
 }

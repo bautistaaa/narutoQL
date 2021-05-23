@@ -1,6 +1,10 @@
+import Link from 'next/link';
+import React from 'react';
+import { useAppContext } from '../shared/AppContext';
 import styles from '../styles/Home.module.scss';
 
 export default function Home() {
+  const { isLoggedIn } = useAppContext();
   return (
     <div className={styles.wrapper}>
       <div className={styles.hero}>
@@ -18,6 +22,13 @@ export default function Home() {
             <img src="twitch.svg" height="20" alt="" />
             by: trash_dev
           </a>
+          <div>
+            {isLoggedIn && (
+              <Link href="/queue">
+                <button className={styles.queue}>Queue</button>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </div>

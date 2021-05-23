@@ -1,0 +1,22 @@
+.field {
+  margin-bottom: 10px;
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  input {
+    border-radius: 3px;
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+.submit {
+  cursor: pointer;
+  background: black;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+}

@@ -1,5 +1,6 @@
 import { Field, InputType, ObjectType } from 'type-graphql';
 
+// asd
 @ObjectType()
 @InputType('CharacterInput')
 export class CharacterInput {

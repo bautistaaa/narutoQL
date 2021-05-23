@@ -1,4 +1,11 @@
 export { CharacterInput } from './character-input';
 export { CharacterResolver } from './character-resolver';
-export { Character, CharacterModel } from './character-type';
-export { Characters, GetCharactersArgs, UpdateCharacterInput } from './characters-type';
+export { Character, CharacterDraft, CharacterModel } from './character-type';
+export {
+  ApproveChangeInput,
+  Characters,
+  GetCharactersArgs,
+  GetCharacterDraftsArgs,
+  RejectChangeInput,
+  UpdateCharacterInput,
+} from './characters-type';

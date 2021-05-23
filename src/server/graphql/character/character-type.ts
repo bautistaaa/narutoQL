@@ -1,9 +1,12 @@
 import { getModelForClass, prop } from '@typegoose/typegoose';
-
 import { Field, Int, ID, ObjectType } from 'type-graphql';
 
 @ObjectType()
 export class CharacterHistory {
+  @prop()
+  @Field()
+  id: string;
+
   @prop()
   @Field(() => Int, { nullable: true })
   age?: number;
@@ -23,9 +26,6 @@ export class CharacterHistory {
   @prop()
   @Field({ nullable: true })
   firstMangaAppearance?: string;
-
-  @Field(() => ID)
-  _id: string;
 
   @prop()
   @Field({ nullable: true })
@@ -67,8 +67,23 @@ export class Change {
   newValue: string;
 }
 
+//@ObjectType()
+//export class File {
+//@prop()
+//@Field()
+//file: Buffer;
+
+//@prop()
+//@Field()
+//type: string;
+//}
+
 @ObjectType()
 export class CharacterDraft {
+  @prop()
+  @Field()
+  id: string;
+
   @prop()
   @Field()
   timeStamp: string;
@@ -76,6 +91,14 @@ export class CharacterDraft {
   @prop()
   @Field(() => [Change])
   changes: Change[];
+
+  @prop()
+  @Field()
+  avatarDraft: string;
+
+  //@prop()
+  //@Field()
+  //avatarDraft: File;
 }
 
 @ObjectType()

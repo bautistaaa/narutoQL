@@ -1,4 +1,7 @@
 .footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background: white;
   height: 50px;
   width: 100%;
@@ -9,3 +12,6 @@
   z-index: 399;
   border-top: 1px solid #d6d6d6;
 }
+
+.left{}
+.right{}

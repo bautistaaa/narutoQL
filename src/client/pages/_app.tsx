@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import GoogleTag from '../components/GoogleTag';
 import Layout from '../components/Layout';
 import Nav from '../components/Nav';
+import { AppProvider } from '../shared/AppContext';
 import '../styles/index.scss';
 
 const queryClient = new QueryClient();
@@ -21,10 +22,12 @@ function MyApp({ Component, pageProps }) {
       <GoogleTag />
 
       <Layout>
-        <QueryClientProvider client={queryClient}>
-          <Nav />
-          <Component {...pageProps} />
-        </QueryClientProvider>
+        <AppProvider>
+          <QueryClientProvider client={queryClient}>
+            <Nav />
+            <Component {...pageProps} />
+          </QueryClientProvider>
+        </AppProvider>
       </Layout>
     </>
   );

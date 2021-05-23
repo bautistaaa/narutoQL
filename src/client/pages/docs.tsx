@@ -17,7 +17,7 @@ import VillageSingle from '../components/documentation/VillageSingle';
 import VillageAll from '../components/documentation/VillageAll';
 import PaginationSchema from '../components/documentation/PaginationSchema';
 
-const Toggle: FC<{ handleClick: Function }> = props => {
+const Toggle: FC<{ handleClick: Function }> = (props) => {
   const { handleClick: callback } = props;
   const [isClicked, setIsClicked] = useState(false);
   const buttonClass = cx([

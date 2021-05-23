@@ -1,3 +1,11 @@
+export interface Draft {
+  id: string;
+  timeStamp: number;
+  changes: {
+    key: string;
+    newValue: string;
+  }[];
+}
 interface Result {
   _id: number;
   age: number;
@@ -10,6 +18,7 @@ interface Result {
   notableQuotes: string;
   rank: string;
   village: string;
+  drafts?: Draft[];
 }
 
 export default Result;

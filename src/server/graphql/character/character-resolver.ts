@@ -1,3 +1,6 @@
+import { v4 as uuidv4 } from 'uuid';
+import { GraphQLUpload, FileUpload } from 'graphql-upload';
+import { createWriteStream } from 'fs';
 import { Document } from 'mongoose';
 import {
   Resolver,
@@ -7,18 +10,20 @@ import {
   Mutation,
   Root,
   FieldResolver,
-  Ctx,
+  Authorized,
 } from 'type-graphql';
 import {
+  ApproveChangeInput,
   Character,
   Characters,
   CharacterModel,
   GetCharactersArgs,
+  GetCharacterDraftsArgs,
+  RejectChangeInput,
   UpdateCharacterInput,
 } from './';
 import NotFoundError from '../../utils/errors';
 import { limit } from '../../utils/constants';
-import { Context } from 'vm';
 
 const createChange = (object: unknown) =>
   Object.entries(object).map(([k, v]) => {
@@ -28,18 +33,100 @@ const createChange = (object: unknown) =>
     };
   });
 
-//(root, args, context)
 @Resolver(() => Character)
 export class CharacterResolver {
-  //@FieldResolver()
-  //history(@Root() character: Character, @Ctx() ctx: Context) {
-  //return character.history;
-  //}
-
   @FieldResolver()
-  drafts(@Root() character: Character, @Ctx() ctx: Context) {
-    console.log(ctx);
+  @Authorized('ADMIN')
+  drafts(@Root() character: Character) {
     return character.drafts.flat();
+  }
+
+  @Mutation(() => Boolean)
+  async rejectChange(
+    @Arg('data', () => RejectChangeInput)
+    rejectChange: RejectChangeInput
+  ): Promise<boolean> {
+    const { id, draftId } = rejectChange;
+    await CharacterModel.findOneAndUpdate(
+      { _id: id },
+      {
+        // @ts-ignore
+        $pull: { drafts: { id: draftId } },
+      }
+    );
+    return true;
+  }
+  @Mutation(() => Boolean)
+  async approveChange(
+    @Arg('data', () => ApproveChangeInput)
+    approveChange: ApproveChangeInput
+  ): Promise<boolean> {
+    const {
+      id: characterId,
+      draft: { id: draftId, changes },
+    } = approveChange;
+    const updates = changes.reduce((a, c) => {
+      return {
+        ...a,
+        [c.key]: c.newValue,
+      };
+    }, {});
+    const {
+      age,
+      firstAnimeAppearance,
+      firstMangaAppearance,
+      village,
+      nameMeaning,
+      notableFeatures,
+      notableQuotes,
+      rank,
+      avatarSrc,
+      description,
+    } = await CharacterModel.findById(characterId);
+
+    await CharacterModel.findOneAndUpdate(
+      { _id: characterId },
+      {
+        ...updates,
+        $push: {
+          history: {
+            id: uuidv4(),
+            // @ts-ignore
+            timeStamp: new Date(),
+            ...{
+              age,
+              firstAnimeAppearance,
+              firstMangaAppearance,
+              village,
+              nameMeaning,
+              notableFeatures,
+              notableQuotes,
+              rank,
+              avatarSrc,
+              description,
+            },
+          },
+        },
+        // @ts-ignore
+        $pull: { drafts: { id: draftId } },
+      }
+    );
+    return true;
+  }
+
+  @Mutation(() => Boolean)
+  async uploadPhoto(@Arg('file', () => GraphQLUpload) file: FileUpload) {
+    const { createReadStream, filename } = await file;
+    const writableStream = createWriteStream(
+      `${__dirname}/../../../files/images/${filename}`,
+      { autoClose: true }
+    );
+    return new Promise((res, rej) => {
+      createReadStream()
+        .pipe(writableStream)
+        .on('finish', () => res(true))
+        .on('error', () => rej(false));
+    });
   }
 
   @Mutation(() => Character)
@@ -49,7 +136,7 @@ export class CharacterResolver {
   ): Promise<Character> {
     const { _id, ...datas } = updateCharacter;
     const changes = createChange(datas);
-    const newDraft = { timeStamp: new Date(), changes };
+    const newDraft = { id: uuidv4(), timeStamp: new Date(), changes };
     const results = await CharacterModel.findOneAndUpdate(
       { _id },
       {
@@ -92,6 +179,40 @@ export class CharacterResolver {
           ? { $in: villageRegexes }
           : new RegExp('', 'i'),
     };
+    const [results, count] = await Promise.all([
+      CharacterModel.find(query)
+        .sort({ name: 1 })
+        .limit(limit)
+        .skip(page * limit - limit)
+        .exec(),
+      CharacterModel.find(query).countDocuments(),
+    ]);
+
+    const pages = Math.ceil(count / limit);
+
+    if (page > pages && pages !== 0) {
+      throw new NotFoundError('Invalid page');
+    }
+
+    return {
+      info: {
+        count,
+        pages,
+        next: page >= pages ? null : page + 1,
+        prev: page < 2 ? null : page - 1,
+      },
+      results: results,
+    };
+  }
+
+  @Query(() => Characters)
+  async characterDrafts(
+    @Args(() => GetCharacterDraftsArgs)
+    getCharacterDraftsArgs: GetCharacterDraftsArgs
+  ): Promise<Characters> {
+    const { page = 1 } = getCharacterDraftsArgs;
+
+    const query = { drafts: { $ne: null } };
     const [results, count] = await Promise.all([
       CharacterModel.find(query)
         .sort({ name: 1 })

@@ -15,7 +15,7 @@
 }
 
 .overlay {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   top: 0;
   right: 0;
@@ -39,11 +39,48 @@
   }
 }
 
-.submit {
+.submit,
+.cancel {
   padding: 5px 10px;
-  background: none;
   outline: none;
   border: 1px solid black;
   border-radius: 3px;
   font-size: 1.1rem;
+  color: white;
+  cursor: pointer;
+}
+.cancel {
+  background: red;
+}
+.submit {
+  background: green;
+}
+
+.avatars {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  height: 200px;
+}
+
+.original-wrapper {
+  flex: 1;
+  margin-right: 5px;
+  position: relative;
+  .original {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  label {
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: black;
+    color: white;
+    padding: 20px;
+    font-size: 12px;
+    left: 0;
+  }
 }

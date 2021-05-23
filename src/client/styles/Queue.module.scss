@@ -1,38 +1,4 @@
-.filter-button {
-  display: flex;
-  border-radius: 3px;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  bottom: 60px;
-  left: calc(50% - 75px);
-  background: black;
-  cursor: pointer;
-  color: white;
-  border: none;
-  width: 150px;
-  padding: 15px;
-  text-transform: uppercase;
-
-  @media (min-width: 768px) {
-    display: none;
-  }
-
-  .filter-count {
-    display: inline-block;
-    padding: 5px 10px;
-    background: white;
-    color: black;
-    margin-left: 5px;
-    border-radius: 3px;
-  }
-}
-
 .results {
-  margin-left: 0;
-  @media (min-width: 768px) {
-    margin-left: 250px;
-  }
 }
 .card-grid {
   display: grid;
@@ -94,4 +60,48 @@
   right: 0;
   bottom: 0;
   background-color: rebeccapurple;
+}
+
+.key {
+  font-weight: 500;
+  margin-right: 5px;
+}
+.right {
+  width: 23px;
+  height: 20px;
+  position: relative;
+  top: 5px;
+}
+.original {
+  background: #fcaab9;
+  display: inline-block;
+  padding: 5px;
+}
+.new {
+  background: #c3ffc3;
+  display: inline-block;
+  padding: 5px;
+}
+
+.footer {
+  margin-top: 10px;
+}
+
+.reject,
+.approve {
+  border: none;
+  outline: none;
+  background: none;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.reject {
+  background: tomato;
+  margin-right: 5px;
+}
+.approve {
+  background: #62aa62;
 }

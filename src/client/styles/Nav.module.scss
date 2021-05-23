@@ -38,7 +38,47 @@
     color: white;
     border-radius: 5px;
   }
-  .github {
-    margin-left: 15px;
+  .login {
+    cursor: pointer;
+    background: none;
+    outline: none;
+    border: none;
+    font: inherit;
+    font-size: 1.2em;
+    font-weight: bold;
   }
 }
+.modal {
+  position: absolute;
+  width: 400px;
+  top: 30%;
+  left: 45%;
+  background-color: #ffffff;
+  padding: 50px;
+  z-index: 1001;
+  border-radius: 3px;
+  outline: none;
+  .close {
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    outline: none;
+    img {
+      height: 15px;
+      width: 15px;
+    }
+  }
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+

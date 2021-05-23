@@ -5,6 +5,7 @@ function useClickOutside(
 ) {
   useEffect(() => {
     const listener = (event: any) => {
+      console.log(ref.current);
       if (!ref.current || ref.current.contains(event.target)) {
         return;
       }

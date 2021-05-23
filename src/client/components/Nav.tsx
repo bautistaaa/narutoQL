@@ -1,9 +1,22 @@
+import React, { FC, useEffect, useRef, useState } from 'react';
+import Modal from 'react-modal';
 import Link from 'next/link';
-import { FC } from 'react';
+import Cookies from 'js-cookie';
 
+import LoginForm from './LoginForm';
 import styles from '../styles/Nav.module.scss';
+import { useAppContext } from '../shared/AppContext';
+import useClickOutside from '../hooks/useClickOutside';
 
 const Nav: FC = () => {
+  const modalRef = useRef();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isLoggedIn, setIsLoggedIn } = useAppContext();
+
+  useClickOutside(modalRef, () => {
+    setIsModalOpen(false);
+  });
+
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
@@ -29,21 +42,45 @@ const Nav: FC = () => {
             </Link>
           </li>
           <li>
-            <a
-              href="https://github.com/bautistaaa/narutoQL"
-              target="_blank"
-              className={styles.item}
-            >
-              <img
-                src="github.svg"
-                className={styles.github}
-                height="30"
-                width="30"
-              />
-            </a>
+            {isLoggedIn ? (
+              <button
+                onClick={() => {
+                  setIsLoggedIn(false);
+                  Cookies.remove('jwt');
+                }}
+                className={styles.login}
+              >
+                Logout
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  setIsModalOpen(true);
+                }}
+                className={styles.login}
+              >
+                Login
+              </button>
+            )}
           </li>
         </ul>
       </nav>
+      <Modal
+        contentRef={(node) => (modalRef.current = node as any)}
+        isOpen={isModalOpen}
+        className={styles.modal}
+        overlayClassName={styles.overlay}
+      >
+        <button
+          onClick={() => {
+            setIsModalOpen(false);
+          }}
+          className={styles.close}
+        >
+          <img src="cancel.svg" />
+        </button>
+        <LoginForm setIsModalOpen={setIsModalOpen} />
+      </Modal>
     </header>
   );
 };

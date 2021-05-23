@@ -37,8 +37,7 @@ const characterSchema: DataTable = {
     {
       key: 'name',
       type: 'String',
-      description:
-        'Name of character.',
+      description: 'Name of character.',
     },
     {
       key: 'nameMeaning',
