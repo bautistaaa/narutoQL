@@ -130,12 +130,12 @@ const EditDrawer: ForwardRefRenderFunction<
         toast.error('No Changes');
         return;
       }
-      //const payload = {
-      //_id: newCharacter._id,
-      //...files,
-      //...diffs,
-      //};
-      //mutation.mutate({ ...(payload as any) });
+      const payload = {
+        _id: newCharacter._id,
+        ...files,
+        ...diffs,
+      };
+      mutation.mutate({ ...(payload as any) });
     } else {
       toast.error('CAPTCHA failed!');
     }

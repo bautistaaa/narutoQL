@@ -14,6 +14,7 @@ const createExpressServer = (apolloServer: ApolloServer): Express => {
 
   app.use(
     cors({
+      origin: 'http://localhost:3000',
       credentials: true,
     })
   );
@@ -22,9 +23,16 @@ const createExpressServer = (apolloServer: ApolloServer): Express => {
   app.use(bodyParser.json());
 
   app.use(validateJwt);
-  apolloServer.applyMiddleware({ app });
+  apolloServer.applyMiddleware({
+    app,
+    cors: {
+      credentials: true,
+      origin: 'http://localhost:3000',
+    },
+  });
 
   app.get('/', (_, res) => res.send('k it works Express + TypeScript Server'));
+  app.post('/api/uploadPhoto', (req, res) => {});
 
   return app;
 };
