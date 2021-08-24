@@ -146,12 +146,7 @@ const Explorer = () => {
             return (
               <Fragment key={i}>
                 {group.characters?.results.map((result: Result, i: number) => (
-                  <Card
-                    key={`card-${i}`}
-                    result={result}
-                    setIsDrawerOpen={setIsEditDrawerOpen}
-                    setSelectedCharacter={setSelectedCharacter}
-                  />
+                  <Card key={`card-${i}`} result={result} />
                 ))}
               </Fragment>
             );
@@ -179,11 +174,11 @@ const Explorer = () => {
           ? 'Load More'
           : 'Nothing more to load'}
       </button>
-        <EditDrawer
-          ref={editableDrawerRef}
-          isOpen={isEditDrawerOpen}
-          character={selectedCharacter}
-        />
+      <EditDrawer
+        ref={editableDrawerRef}
+        isOpen={isEditDrawerOpen}
+        character={selectedCharacter}
+      />
     </>
   );
 };
