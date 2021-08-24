@@ -39,7 +39,7 @@ export class CharacterResolver {
   @FieldResolver()
   drafts(@Root() character: Character, @Ctx() ctx: Context) {
     console.log(ctx);
-    return character.drafts.flat();
+    return character?.drafts?.flat();
   }
 
   @Mutation(() => Character)

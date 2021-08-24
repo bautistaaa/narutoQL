@@ -5,7 +5,7 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["es2018", "esnext.asynciterable"],
+    "lib": ["es2019", "esnext.asynciterable"],
     "module": "commonjs",
     "noImplicitAny": false,
     "outDir": "dist/server",

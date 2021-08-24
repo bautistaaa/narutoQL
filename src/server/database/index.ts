@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import mongoose from 'mongoose';
 
-const dbUrl = process.env.DATABASE_URL;
+const dbUrl = process.env.MONGO_URL;
 const connectDb = () => {
   if (dbUrl) {
     return mongoose.connect(dbUrl);
