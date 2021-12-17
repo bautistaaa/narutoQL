@@ -4,7 +4,7 @@ dotenv.config();
 import 'reflect-metadata';
 
 import mongoose from 'mongoose';
-import { connectDb } from './database';
+import { connectDb, disconnectDb } from './database';
 import createExpressServer from './createExpressServer';
 import createGraphqlServer from './createGraphqlServer';
 
@@ -19,6 +19,9 @@ const start = async () => {
   app.listen(PORT, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
   });
+
+  // If the Node process ends, close the Mongoose connection
+  process.on('SIGINT', disconnectDb).on('SIGTERM', disconnectDb);
 };
 
 start();

@@ -9,5 +9,15 @@ const connectDb = () => {
   console.error(`no db url provided!!`);
   throw Error('no db connected');
 };
+const disconnectDb = () => {
+  mongoose.connection.close(function () {
+    console.log(
+      'Mongoose default connection with DB :' +
+        dbUrl +
+        ' is disconnected through app termination'
+    );
+    process.exit(0);
+  });
+};
 
-export { connectDb };
+export { connectDb, disconnectDb };
