@@ -1,6 +1,6 @@
 ### DONE
 
-- character scraper - ~480 characterss
+- character scraper - ~480 characters
 - clan scraper
 - village scraper
 - convert scraped data to CSV for ingestion
