@@ -85,7 +85,7 @@ const Docs = () => {
           </p>
           <p>
             You can query the api at{' '}
-            <code className="code-text">www.narutoql.com/graphql</code>
+            <code className="code-text">www.narutoql.up.railway.app/graphql</code>
           </p>
           <h3>Contribute</h3>
           <p>
