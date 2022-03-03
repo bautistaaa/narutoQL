@@ -12,7 +12,7 @@ const Nav: FC = () => {
         </Link>
         <ul className={styles.links}>
           <li>
-            <a target="_blank" href="/graphql" className={styles.item}>
+            <a target="_blank" href="https://narutoql.up.railway.app/graphql" className={styles.item}>
               Play
             </a>
           </li>
