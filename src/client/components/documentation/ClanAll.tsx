@@ -3,10 +3,12 @@ import CodeSnippet from '../CodeSnippet';
 
 const code = `{
   clans {
-    name    
-    description
-    avatarSrc
-    village
+    results {
+      name    
+      description
+      avatarSrc
+      village
+    }
   }
 }`;
 const json = `{
@@ -44,4 +46,3 @@ const ClanAll: FC = () => {
 };
 
 export default ClanAll;
-
