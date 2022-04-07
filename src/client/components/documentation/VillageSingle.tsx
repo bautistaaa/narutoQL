@@ -2,7 +2,7 @@ import { FC } from 'react';
 import CodeSnippet from '../CodeSnippet';
 
 const code = `{
-  village(id: "5f9fa4177f9c8a2e250e0124") {
+  village(id: "61bd1dbc918f12c17b9c6460") {
     _id
     name
   }
@@ -10,8 +10,8 @@ const code = `{
 const json = `{
   "data": {
     "village": {
-      "_id": "5f9fa4177f9c8a2e250e0124",
-      "name": "leaf village"
+      "_id": "61bd1dbc918f12c17b9c6460",
+      "name": "cloud village"
     }
   }
 }

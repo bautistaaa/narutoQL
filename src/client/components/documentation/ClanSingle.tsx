@@ -2,7 +2,7 @@ import { FC } from 'react';
 import CodeSnippet from '../CodeSnippet';
 
 const code = `{
-  clan(id: "5f9fa4177f9c8a2e250e0135") {
+  clan(id: "61bd1dbc918f12c17b9c646e") {
     avatarSrc
     description
     name

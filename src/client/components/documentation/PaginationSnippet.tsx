@@ -2,7 +2,7 @@ import { FC } from 'react';
 import CodeSnippet from '../CodeSnippet';
 
 const code = `{
-  character(id: "1234") {
+  characters(filter: {village: "leaf"}) {
     info {
       count
       pages
@@ -13,17 +13,16 @@ const code = `{
 }`;
 const json = `{
   "data": {
-    "character": {
+    "characters": {
       "info": {
-        "count": 3,
-        "pages": 1,
-        "next": null,
+        "count": 157,
+        "pages": 4,
+        "next": 2,
         "prev": null
       }
     }
   }
-}
-`;
+}`;
 const PaginationSnippet: FC = () => {
   return (
     <>
@@ -35,5 +34,3 @@ const PaginationSnippet: FC = () => {
 };
 
 export default PaginationSnippet;
-
-

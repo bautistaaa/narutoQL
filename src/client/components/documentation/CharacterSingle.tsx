@@ -2,7 +2,7 @@ import { FC } from 'react';
 import CodeSnippet from '../CodeSnippet';
 
 const code = `{
-  character(id: "1234") {
+  character(id: "61bd1dbc918f12c17b9c6483") {
     name
     avatarSrc
     description

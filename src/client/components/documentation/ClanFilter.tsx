@@ -3,10 +3,12 @@ import CodeSnippet from '../CodeSnippet';
 
 const code = `{
   clans(village: "leaf") {
-    name    
-    description
-    avatarSrc
-    village
+    results {
+      name    
+      description
+      avatarSrc
+      village 
+    }
   }
 }`;
 const json = `{
