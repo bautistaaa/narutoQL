@@ -33,6 +33,7 @@ services:
     container_name: mongo
     volumes:
       - './mongo:/data/db'
+    command: [--auth]
     image: mongo:4.2.8
     ports:
       - '27017:27017'
